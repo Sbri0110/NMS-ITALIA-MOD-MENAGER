@@ -5,6 +5,31 @@ Le versioni seguono [Versionamento Semantico](https://semver.org/lang/it/).
 
 ---
 
+## 1.1.1 — 25 settembre 2026
+
+Corregge un difetto della 1.1.0 che rendeva inutilizzabili due sezioni.
+
+### Correzioni
+
+- **Le Impostazioni e la sezione delle mod non si aprivano.** Cliccando la voce
+  nella barra laterale non succedeva nulla: nessun messaggio, nessun errore nel
+  log. La causa era nella composizione dei servizi: due servizi erano registrati
+  sotto un'interfaccia ma richiesti dalle view model sotto un'altra — una
+  interfaccia derivata nel primo caso, il tipo concreto nel secondo. Il
+  contenitore non riusciva a costruire le due view model, e la navigazione
+  falliva in silenzio.
+- **Il controllo che mancava.** Il difetto era invisibile alla verifica che si
+  stava usando — "il programma si avvia e resta vivo" — perche' la dashboard e'
+  la sezione predefinita e le altre non vengono costruite finche' qualcuno non
+  le apre. Ora c'e' un test che **costruisce ogni sezione dal contenitore vero**
+  e verifica che ogni voce dichiarata disponibile porti a una schermata. Sarebbe
+  stato l'unico modo di accorgersene prima di pubblicare.
+- L'intestazione inviata ai servizi conteneva la versione scritta a mano, ed era
+  rimasta a `1.0.0`. Ora la legge dall'assembly: un dato che si puo' derivare
+  non va trascritto.
+
+---
+
 ## 1.1.0 — 25 settembre 2026
 
 Aggiunge cinque funzioni e corregge il pacchetto. Nessuna funzione della 1.0.0
