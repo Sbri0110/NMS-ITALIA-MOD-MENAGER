@@ -1,15 +1,15 @@
 # Informativa sulla privacy — NMS ITALIA MOD MENAGER
 
 **Ultimo aggiornamento:** 25 settembre 2026
-**Versione del programma:** 1.0.0
+**Versione del programma:** 1.1.0
 
 ---
 
 ## In una riga
 
-Il programma **non raccoglie nulla e non invia nulla**. Non esiste un
-server, non esiste un account, non esiste telemetria. I tuoi dati restano
-sul tuo computer.
+Il programma **non raccoglie nulla e non invia nulla che ti riguardi**. Non
+esiste un server nostro, non esiste un account, non esiste telemetria. I tuoi
+dati restano sul tuo computer.
 
 ---
 
@@ -34,39 +34,55 @@ programma non contiene codice di terze parti che telefoni a casa.
 
 ## 2. Connessioni di rete
 
-Il programma effettua **una sola** connessione in uscita possibile:
+Il programma effettua connessioni in uscita verso **tre destinazioni**, e solo
+in queste circostanze:
 
 | Destinazione | Quando | Cosa viene inviato |
 |---|---|---|
-| `api.nexusmods.com` | Solo se premi un pulsante nella schermata Impostazioni, e solo se hai inserito una chiave API | La tua chiave API (header `apikey`) e l'identificativo dell'applicazione nell'header `User-Agent` |
+| `api.nexusmods.com` | Solo se premi un pulsante nella schermata Impostazioni, e solo se hai inserito una chiave API | La tua chiave API (header `apikey`) e l'intestazione `User-Agent` |
+| il servizio di distribuzione degli archivi di Nexus | Solo dopo che hai premuto "Scarica e installa" | Nessun dato: è una richiesta di scaricamento |
+| `api.github.com` e il servizio di distribuzione degli archivi di GitHub | Solo se premi "Controlla" nelle Impostazioni, **oppure** all'avvio se hai attivato il controllo | Solo l'intestazione `User-Agent` |
 
-**Nessuna connessione avviene da sola.** Non all'avvio, non in background,
-non su un timer. Se non premi nulla, il programma non contatta nessuno.
+**Nessuna connessione avviene senza il tuo consenso.** Non in background, non su
+un timer.
+
+L'unica eccezione è il controllo degli aggiornamenti all'avvio: è
+**disattivato per impostazione predefinita** e si attiva con una casella nella
+schermata Impostazioni. Se non la spunti, il programma non contatta nessuno
+finché non premi un pulsante.
+
+**Cosa contiene la richiesta di controllo degli aggiornamenti.** È la stessa che
+farebbe un browser aprendo la pagina delle release: nessun identificativo,
+nessuna versione installata, nessuna statistica. GitHub vede una richiesta
+anonima, come ne vede molte.
 
 Nessun'altra destinazione è raggiungibile dal programma. Gli indirizzi
-`www.nexusmods.com` e `github.com` che compaiono nel codice sono **testo
-mostrato a schermo** e una firma nell'header `User-Agent`: non vengono mai
-contattati.
+`www.nexusmods.com` che compaiono nel codice sono **testo mostrato a schermo** o
+aperti nel tuo browser su tua richiesta: non vengono mai contattati dal
+programma.
 
-Se non usi le funzioni online — e non sei obbligato — il programma funziona
-per intero senza mai toccare la rete. Puoi verificarlo tu stesso: il
-programma continua a funzionare con la scheda di rete disattivata.
+Se non usi le funzioni online — e non sei obbligato — il programma funziona per
+intero senza mai toccare la rete. Puoi verificarlo tu stesso: il programma
+continua a funzionare con la scheda di rete disattivata.
 
 ### Cosa contiene l'header `User-Agent`
 
 ```
-NMSItalia.ModMenager/1.0.0 (Windows; +https://discord.gg/KB2NbjCW6h)
+NMSItalia.ModMenager/1.1.0 (Windows; +https://discord.gg/KB2NbjCW6h)
 ```
 
-Sono tre informazioni: il nome del programma, la sua versione e un
-indirizzo web. La documentazione dell'API di Nexus richiede questa
-intestazione, e serve al fornitore per identificare chi effettua le
-richieste in caso di problemi. **Non contiene nulla che ti riguardi.**
+Sono tre informazioni: il nome del programma, la sua versione e un indirizzo
+web. La documentazione dell'API di Nexus richiede questa intestazione, e serve
+al fornitore per identificare chi effettua le richieste in caso di problemi.
+**Non contiene nulla che ti riguarda.**
 
-L'indirizzo è l'invito al Discord della community: è il recapito a cui
-Nexus può rivolgersi se le richieste del programma dovessero dare
-problemi. Non è un identificativo personale e non permette di risalire a
-te.
+È **una sola stringa per tutte le destinazioni**: averne due significherebbe
+doverle tenere allineate, e la versione dentro è letta dal programma stesso, non
+scritta a mano.
+
+L'indirizzo è l'invito al Discord della community: è il recapito a cui un
+fornitore può rivolgersi se le richieste del programma dovessero dare problemi.
+Non è un identificativo personale e non permette di risalire a te.
 
 ---
 
@@ -148,12 +164,18 @@ nemmeno di minori. Non è richiesta alcuna registrazione.
 
 ## 7. Modifiche a questa informativa
 
-Se in futuro il programma dovesse introdurre una funzione che comunica
-con l'esterno — per esempio un controllo automatico degli aggiornamenti
-del programma stesso — questa informativa verrà aggiornata **prima** che
-la funzione venga attivata, e la funzione sarà disattivabile.
+La versione 1.0.0 di questo documento dichiarava che, se il programma avesse
+introdotto una funzione che comunica con l'esterno, l'informativa sarebbe stata
+aggiornata **prima** che la funzione venisse attivata.
 
-La versione corrente non contiene alcuna funzione di questo tipo.
+**È successo con la versione 1.1.0**, che introduce il controllo degli
+aggiornamenti del programma. Questa informativa è stata aggiornata con essa, e
+la funzione è disattivabile: il controllo all'avvio è spento per impostazione
+predefinita, e quello manuale parte solo se premi un pulsante.
+
+Vale anche in futuro: se una nuova funzione dovesse comunicare con l'esterno,
+questa informativa verrà aggiornata **prima** che la funzione venga attivata, e
+la funzione sarà disattivabile.
 
 ---
 
@@ -172,12 +194,15 @@ codice, che non è disponibile. Si appoggiano a due cose che puoi
 controllare tu:
 
 1. **Il comportamento osservabile.** Il programma funziona per intero con
-   la scheda di rete disattivata. Se qualcosa inviasse dati di nascosto,
-   non funzionerebbe offline — e invece funziona.
+   la scheda di rete disattivata — installazione delle mod, profili,
+   diagnostica, avvio del gioco. Se qualcosa inviasse dati di nascosto, non
+   funzionerebbe offline, e invece funziona.
 2. **Il traffico di rete.** Puoi osservare le connessioni del programma
    con gli strumenti di Windows (Monitoraggio risorse, o il firewall con
-   le regole di notifica attive). L'unica destinazione che vedrai è
-   `api.nexusmods.com`, e solo dopo che hai premuto un pulsante.
+   le regole di notifica attive). Vedrai al massimo `api.nexusmods.com`,
+   `api.github.com` e i rispettivi servizi di scaricamento degli archivi —
+   e solo dopo che hai premuto un pulsante, o all'avvio se hai attivato il
+   controllo degli aggiornamenti.
 
 Se trovi una connessione che questo documento non dichiara, è un difetto
 grave: segnalala sul Discord della community (sezione 9) e verrà

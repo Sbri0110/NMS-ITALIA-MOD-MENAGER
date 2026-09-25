@@ -5,6 +5,137 @@ Le versioni seguono [Versionamento Semantico](https://semver.org/lang/it/).
 
 ---
 
+## 1.1.0 — 25 settembre 2026
+
+Aggiunge cinque funzioni e corregge il pacchetto. Nessuna funzione della 1.0.0
+è stata rimossa o cambiata nel comportamento.
+
+### Avvio del gioco
+
+- **Avvia No Man's Sky dal programma**, con il metodo corretto per la
+  piattaforma:
+  - **Steam** tramite il protocollo `steam://rungameid/<id>`, così il gioco
+    risulta in esecuzione nella libreria, il tempo di gioco viene conteggiato e
+    i salvataggi in cloud si sincronizzano. Avviare l'eseguibile diretto
+    funzionerebbe, ma Steam non lo registrerebbe come in esecuzione.
+  - **Xbox PC / Game Pass** tramite il percorso registrato da Windows
+    (`shell:AppsFolder\...`), che è l'unico modo per avviare un gioco
+    pacchettizzato: il suo eseguibile non è avviabile direttamente.
+  - **GOG** e installazioni indicate a mano tramite l'eseguibile.
+- **Nessun identificativo è scritto nel codice**: quello di Steam viene letto
+  dal file `appmanifest_*.acf` dell'installazione — e accettato solo se
+  composto da cifre — il nome del pacchetto Xbox dal manifest
+  dell'applicazione.
+- Il metodo di avvio viene dichiarato nella schermata **prima** che si prema il
+  pulsante, e quando l'avvio non è possibile il motivo è scritto.
+
+### Cartella del gioco indicata a mano
+
+- Per le installazioni che il rilevamento automatico non trova: giochi su un
+  disco esterno, installazioni spostate, copie di prova.
+- La cartella scelta viene **validata come tutte le altre** — sceglierla a mano
+  non la rende più affidabile — e il percorso viene conservato fra un avvio e
+  l'altro.
+- Se si sceglie per errore una sottocartella (`GAMEDATA` o `Binaries`), il
+  programma risale da solo alla radice.
+- Il percorso viene **rivalidato a ogni avvio**: una cartella spostata o
+  cancellata viene segnalata con il motivo, non ignorata.
+- Un'installazione indicata a mano viene usata per prima, ma se coincide con
+  quella trovata da Steam, Xbox o GOG resta l'etichetta della piattaforma: è
+  quella che serve per avviare il gioco nel modo corretto.
+
+### Analisi dei file `.MBIN`
+
+- Tramite **MBINCompiler**, per vedere cosa una mod cambia dentro un file di
+  dati binari invece di sapere solo che l'ha sostituito.
+- Lo strumento **non viene distribuito e non viene scaricato** dal programma:
+  si usa se c'è, e quando non c'è lo si dichiara.
+- **La versione viene verificata prima di ogni uso.** MBINCompiler è legato
+  alla versione del gioco: usarne uno di un'altra generazione non produce un
+  errore ma un risultato *sbagliato* senza segnalarlo. Se le versioni non
+  corrispondono, la lettura resta disattivata e il motivo viene detto.
+- Il confronto è su maggiore e minore: le ultime cifre sono correzioni dello
+  strumento, non cambi di formato.
+- La conversione avviene su una **copia temporanea**: i file dell'utente non
+  vengono mai toccati, e nessuna conversione parte da sola.
+
+### Download delle mod da Nexus Mods
+
+- **Installazione senza passare dal browser**: si incolla l'indirizzo della mod,
+  il programma mostra i file pubblicati e li scarica.
+  - Con un account **Premium** il download parte direttamente.
+  - Con un account **gratuito** Nexus richiede di passare dal sito: si incolla
+    il collegamento `.nxm` che il sito genera premendo "Mod Manager Download",
+    e il download funziona lo stesso. Il tipo di account è dichiarato nella
+    schermata prima che si provi.
+- Il file scaricato **non viene installato automaticamente**: passa dalla stessa
+  analisi preventiva e dalla stessa transazione di un archivio scelto a mano.
+- Il contenuto viene controllato mentre arriva: un collegamento scaduto risponde
+  con una pagina web, che viene riconosciuta e rifiutata invece di essere
+  salvata come se fosse un archivio.
+- Il nome del file viene ripulito: un nome costruito ad arte non può scrivere
+  fuori dalla cartella temporanea.
+
+### Aggiornamento del programma
+
+- **Controllo degli aggiornamenti** dalle release di questo repository.
+  - **Non avviene da solo**: parte quando si preme il pulsante, oppure
+    all'avvio **solo se lo si attiva**. La scelta predefinita è di non
+    controllare.
+  - La richiesta non contiene nulla che riguardi l'utente: è la stessa che
+    farebbe un browser aprendo la pagina delle release.
+  - **Non propone mai un ritorno indietro**: se la versione installata è più
+    avanti di quella pubblicata, non c'è nulla da proporre.
+- **Download verificato.** L'archivio viene scaricato e la sua impronta SHA-256
+  confrontata con quella dichiarata nelle note del rilascio. Se non corrisponde,
+  **il file viene eliminato e l'aggiornamento non prosegue**. Se il rilascio non
+  dichiara un'impronta, il file si scarica ma la schermata lo dice, invece di
+  dichiarare una verifica che non è avvenuta.
+- **Applicazione assistita.** Il programma scompatta la nuova versione,
+  controlla che contenga davvero il programma e che la cartella sia scrivibile,
+  poi scrive uno script che attende la chiusura, sostituisce i file e riavvia.
+  Lo script **copia e basta**: non esegue nulla di quello che copia.
+
+### Distribuzione
+
+- **Un solo eseguibile nella cartella.** Lo strumento diagnostico del runtime
+  (`createdump.exe`) e la documentazione XML delle librerie vengono rimossi
+  dalla pubblicazione: chi apre la cartella deve poter capire quale file
+  avviare senza chiederlo.
+- Il `LEGGIMI.txt` dice esplicitamente qual è l'unico file da avviare, che gli
+  altri non vanno aperti, e che l'eseguibile non va spostato fuori dalla
+  cartella.
+
+### Correzioni
+
+- L'ordine delle installazioni trovate è esplicito e non dipende più dal valore
+  numerico dell'enumerazione delle piattaforme. Non era un difetto visibile, ma
+  significava che aggiungere una piattaforma all'enumerazione avrebbe potuto
+  cambiare quale installazione viene usata, senza che nulla lo segnalasse.
+
+### Limiti dichiarati
+
+- **L'avvio del gioco è verificato solo su Xbox PC / Game Pass**, la piattaforma
+  su cui è stato provato. Steam e GOG sono coperti da test automatici sul
+  comando prodotto, ma non provati su un'installazione reale.
+- **L'analisi dei `.MBIN` richiede MBINCompiler della stessa versione del
+  gioco**, da procurarsi a parte. Non è un difetto: il formato binario viene
+  ricostruito dalla comunità a ogni aggiornamento di No Man's Sky, e riscriverlo
+  qui significherebbe duplicare un lavoro che esiste già ed è mantenuto.
+- **Il download tramite API richiede un account Premium**, oppure un account
+  gratuito con il collegamento `.nxm` dal sito. Non è una limitazione del
+  programma: è Nexus a richiederlo. Resta sempre possibile scaricare dal
+  browser.
+- **L'aggiornamento del programma è verificato solo sul percorso di controllo e
+  di download**, provato contro la release pubblicata. L'applicazione della
+  sostituzione non è ancora stata provata su un aggiornamento reale.
+- **Gli archivi 7Z e RAR sono verificati solo sulla firma.** Il percorso di
+  estrazione è implementato e condiviso con lo ZIP, ma non è ancora stato
+  provato su un archivio reale di ciascun formato.
+- **Nessuna localizzazione** oltre all'italiano.
+
+---
+
 ## 1.0.0 — 25 settembre 2026
 
 Prima versione utilizzabile. Non è una versione "1.0" di facciata: le

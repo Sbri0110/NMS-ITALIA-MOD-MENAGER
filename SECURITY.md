@@ -92,27 +92,69 @@ Un eseguibile rilevato produce un **avviso**, non un blocco: alcune mod
 legittime includono un installer o una utility. L'archivio resta installabile,
 ma il contenuto eseguibile non verra' mai lanciato.
 
-### L'unico processo esterno che il software avvia
+### Ogni processo esterno che il software avvia
 
-Il programma avvia **un solo** processo esterno: No Man's Sky, quando l'utente
-preme il pulsante di avvio. Nessun altro, in nessuna circostanza.
+Il programma avvia processi esterni in **sei** punti. L'elenco e' completo e
+verificabile con una ricerca di `Process.Start` nei sorgenti: chi legge puo'
+controllare che non ce ne siano altri.
 
-L'invariante e' verificabile leggendo il codice: l'unica chiamata a
-`Process.Start` con un eseguibile arbitrario e' in `GameLauncher`, e il valore
-che riceve puo' venire solo da tre fonti, tutte costruite dal programma:
-
-| Fonte | Esempio | Da dove viene |
+| Punto | Cosa avvia | Da dove viene il valore |
 |---|---|---|
-| Indirizzo protocollo Steam | `steam://rungameid/275850` | identificativo letto dal file `appmanifest` dell'installazione, accettato **solo** se composto da cifre |
-| Percorso registrato Xbox | `shell:AppsFolder\HelloGames.NoMansSky_...!NoMansSky` | nome del pacchetto e identificativo dell'applicazione, letti dal manifest |
-| Eseguibile del gioco | `<radice>\Binaries\NMS.exe` | percorso derivato dall'installazione gia' validata, verificato come esistente |
+| `GameLauncher` | No Man's Sky | identificativo Steam letto dall'`appmanifest` (accettato **solo** se di sole cifre), oppure nome pacchetto e identificativo applicazione letti dal manifest Xbox, oppure l'eseguibile derivato dall'installazione validata |
+| `SystemProcessRunner` | MBINCompiler | percorso dello strumento, scelto dall'utente o trovato in cartelle note; la versione viene verificata prima dell'uso |
+| `ApplicationUpdateInstaller` | `cmd.exe` per applicare l'aggiornamento | percorso dello script **scritto dal programma** in una cartella temporanea |
+| `AvaloniaFilePickerService.OpenFolderAsync` | Esplora file su una cartella | percorso locale verificato come esistente |
+| `AvaloniaFilePickerService.OpenUrlAsync` | browser su un indirizzo | indirizzo `https` costruito dal programma |
+| `HomeViewModel.OpenFolder` | Esplora file su una cartella | percorso locale verificato come esistente |
 
-**Nessun percorso arriva dall'utente, da un archivio, da un file di
-configurazione o da un sito.** Un archivio di mod non puo' influenzare questo
-percorso in alcun modo.
+**Nessuno di questi valori arriva da un archivio di mod.** Un archivio non puo'
+influenzare il percorso di un processo in alcun modo: non viene letto per
+costruire un comando, in nessuno dei sei punti.
 
-Le altre chiamate a `Process.Start` nel programma aprono cartelle in Esplora
-file, e ricevono solo percorsi locali gia' verificati come esistenti.
+I due punti che avviano un eseguibile scelto in base a un percorso — il gioco e
+MBINCompiler — hanno in comune il fatto che il percorso viene **verificato prima
+dell'uso** e che l'azione parte solo su richiesta esplicita dell'utente.
+
+### L'aggiornamento del programma
+
+L'aggiornamento e' l'unica funzione che **scarica ed esegue codice nuovo**, ed
+e' quella con le cautele maggiori.
+
+**Cosa viene scaricato.** Un archivio ZIP da un indirizzo `https` che deve
+comparire fra gli allegati del rilascio piu' recente del repository ufficiale.
+L'indirizzo del repository e' una costante nel codice, non una configurazione:
+il programma non puo' essere indirizzato altrove.
+
+**Come viene verificato.** Il rilascio dichiara l'impronta SHA-256 dell'archivio
+nelle proprie note. Il programma la estrae e la confronta con quella del file
+scaricato. **Se non corrisponde, il file viene eliminato e l'aggiornamento non
+prosegue**: non c'e' modo di forzare l'installazione di un archivio che non
+corrisponde. Se il rilascio non dichiara un'impronta, il file si scarica ma
+l'esito lo registra, e la schermata lo dice.
+
+**Come viene applicato.** Su Windows non si puo' sovrascrivere l'eseguibile di
+un processo in esecuzione. Il programma quindi **non** si sostituisce da solo:
+scompatta la nuova versione in una cartella di appoggio e scrive uno script
+`.cmd` che attende la chiusura del programma, copia i file e riavvia. Lo script
+viene avviato solo dopo che l'utente ha premuto il pulsante e ha letto cosa
+succedera'.
+
+**Cosa fa lo script.** Copia file e riavvia il programma. **Non esegue nulla di
+quello che copia.** Il contenuto dell'archivio viene eseguito solo al riavvio,
+dopo la verifica dell'impronta. Lo script e' scritto per essere leggibile da chi
+lo aprisse.
+
+**Cosa non viene fatto.**
+
+- Nessun aggiornamento automatico senza consenso: il controllo parte su
+  richiesta, oppure all'avvio **solo se l'utente lo ha attivato**. La scelta
+  predefinita e' di non controllare.
+- Nessuna richiesta contiene informazioni sull'utente: e' la stessa che farebbe
+  un browser aprendo la pagina delle release. Nessun identificativo, nessuna
+  versione installata, nessuna statistica.
+- Nessun privilegio amministrativo: se la cartella del programma non e'
+  scrivibile, l'aggiornamento viene rifiutato **prima** di iniziare, con la
+  spiegazione di come rimediare.
 
 ---
 

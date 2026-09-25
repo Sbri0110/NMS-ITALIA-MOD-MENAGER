@@ -53,14 +53,17 @@
 <section>
   <div class="contenitore">
     <h2>Cosa fa</h2>
-    <div class="funzione"><b>Rileva il gioco da solo.</b> <span>Steam, Xbox PC / Game Pass, GOG, oppure la cartella indicata a mano — validata come tutte le altre.</span></div>
+    <div class="funzione"><b>Rileva il gioco da solo.</b> <span>Steam, Xbox PC / Game Pass, GOG, oppure la cartella indicata a mano — validata come tutte le altre, e rivalidata a ogni avvio.</span></div>
+    <div class="funzione"><b>Avvia No Man's Sky.</b> <span>Con il metodo corretto per la piattaforma: protocollo Steam, percorso registrato da Windows per Xbox, eseguibile per GOG. Nessun identificativo scritto nel codice.</span></div>
     <div class="funzione"><b>Installa e rimuove le mod.</b> <span>Da archivi ZIP, 7Z e RAR. Ogni operazione è reversibile: un errore a metà lascia il gioco esattamente com'era.</span></div>
+    <div class="funzione"><b>Installa da Nexus Mods.</b> <span>Tramite API ufficiali, senza passare dal browser. Con un account Premium il download parte direttamente; con un account gratuito incolli il collegamento <code>.nxm</code> dal sito. Ogni archivio viene verificato con la sua impronta SHA-256.</span></div>
+    <div class="funzione"><b>Analizza i file <code>.MBIN</code>.</b> <span>Per vedere cosa una mod cambia davvero, non solo che ha sostituito un file. Richiede MBINCompiler della versione giusta: una versione diversa non fallisce, produce un risultato sbagliato senza segnalarlo, e il programma preferisce non usarla.</span></div>
     <div class="funzione"><b>Attiva e disattiva una singola mod.</b> <span>Usa i meccanismi nativi del gioco: non sposta e non rinomina nulla. Così funziona anche la Safe Mode.</span></div>
     <div class="funzione"><b>Trova i conflitti reali.</b> <span>Due mod che toccano lo stesso file ma proprietà diverse <em>non</em> vengono segnalate come in conflitto. I falsi positivi rendono inutili gli avvisi.</span></div>
-    <div class="funzione"><b>Diagnostica completa.</b> <span>Undici controlli in sola lettura, ognuno con la spiegazione di cosa significa e cosa fare. Un controllo che non si può eseguire viene dichiarato, non omesso.</span></div>
+    <div class="funzione"><b>Diagnostica completa.</b> <span>Controlli in sola lettura, ognuno con la spiegazione di cosa significa e cosa fare. Un controllo che non si può eseguire viene dichiarato, non omesso.</span></div>
     <div class="funzione"><b>Trova la mod problematica.</b> <span>Per bisezione: con cinquanta mod servono sei avvii del gioco, non cinquanta. Lo stato di partenza viene sempre ripristinato.</span></div>
     <div class="funzione"><b>Profili, backup e ripristino.</b> <span>Insiemi di mod attive applicabili e confrontabili senza toccare i file.</span></div>
-    <div class="funzione"><b>Installa da Nexus Mods.</b> <span>Tramite API ufficiali, senza passare dal browser.</span></div>
+    <div class="funzione"><b>Si aggiorna da solo.</b> <span>Su tua richiesta: controlla le release, scarica, verifica l'impronta SHA-256 e sostituisce i file al riavvio. Il controllo all'avvio è disattivato per impostazione predefinita.</span></div>
   </div>
 </section>
 
@@ -70,12 +73,14 @@
     <ul>
       <li>Non analizza i file <code>.MBIN</code> senza MBINCompiler della versione giusta. Il formato binario viene ricostruito dalla comunità a ogni aggiornamento del gioco, e riscriverlo qui significherebbe duplicare un lavoro mantenuto altrove.</li>
       <li><strong>Non esegue mai</strong> codice contenuto in una mod.</li>
-      <li>Non invia nulla in rete se non premi un pulsante.</li>
+      <li>Non invia nulla in rete se non premi un pulsante. Il controllo degli aggiornamenti all'avvio è l'unica eccezione, ed è <strong>disattivato per impostazione predefinita</strong>.</li>
+      <li>Non chiede privilegi amministrativi, e non installa nulla nel sistema.</li>
       <li>Non è firmato digitalmente.</li>
     </ul>
     <p style="color:var(--testo-tenue)">
-      Le funzioni non ancora realizzate sono dichiarate dentro il programma con la
-      fase in cui arriveranno. Nessun pulsante che finge di funzionare.
+      Restano due funzioni non ancora realizzate — la fusione assistita dei
+      conflitti e l'analisi dei file <code>.MBXML</code> — e sono dichiarate
+      dentro il programma. Nessun pulsante che finge di funzionare.
     </p>
   </div>
 </section>

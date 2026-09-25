@@ -44,26 +44,39 @@ Guida completa, disinstallazione e problemi comuni:
 
 ## Cosa fa
 
-- **Rileva il gioco da solo** su Steam, Xbox PC / Game Pass e GOG.
+- **Rileva il gioco da solo** su Steam, Xbox PC / Game Pass e GOG, oppure dalla
+  cartella che indichi tu — rivalidata a ogni avvio.
+- **Avvia No Man's Sky** con il metodo corretto per la piattaforma: protocollo
+  Steam, percorso registrato per Xbox, eseguibile per GOG.
 - **Installa e rimuove le mod** da archivi ZIP, 7Z e RAR. Ogni operazione e'
   reversibile: un errore a meta' lascia il gioco esattamente com'era.
+- **Installa da Nexus Mods** senza passare dal browser, con API ufficiali. Con
+  un account Premium il download parte direttamente; con un account gratuito
+  incolli il collegamento `.nxm` dal sito. Ogni archivio viene verificato con
+  la sua impronta SHA-256.
+- **Analizza i file `.MBIN`** tramite MBINCompiler, per vedere cosa una mod
+  cambia davvero. La versione dello strumento viene verificata prima di ogni
+  uso: una versione diversa non fallisce, produce un risultato sbagliato senza
+  segnalarlo, e il programma preferisce non usarla.
 - **Attiva e disattiva una singola mod**, e attiva la **Safe Mode**, usando i
   meccanismi nativi del gioco: non sposta e non rinomina nulla.
 - **Trova i conflitti reali.** Due mod che toccano lo stesso file ma proprieta'
   diverse **non** vengono segnalate come in conflitto.
-- **Diagnostica completa** in sola lettura: undici controlli, ognuno con la
-  spiegazione di cosa significa e cosa fare.
+- **Diagnostica completa** in sola lettura: ogni controllo con la spiegazione di
+  cosa significa e cosa fare.
 - **Trova la mod problematica** per bisezione: con cinquanta mod servono sei
   avvii del gioco, non cinquanta.
 - **Profili, backup e ripristino** reversibile.
-- **Installa da Nexus Mods** tramite API ufficiali, senza passare dal browser.
+- **Si aggiorna da solo**, su tua richiesta: controlla le release, scarica,
+  verifica l'impronta SHA-256 e sostituisce i file al riavvio.
 - **Interfaccia interamente in italiano**, tema scuro.
 
 ## Cosa non fa
 
-- Non analizza i file `.MBIN` senza MBINCompiler della versione giusta.
 - **Non esegue mai** codice contenuto in una mod.
-- Non invia nulla in rete se non premi un pulsante.
+- Non invia nulla in rete se non premi un pulsante. Il controllo degli
+  aggiornamenti all'avvio e' disattivato per impostazione predefinita.
+- Non chiede privilegi amministrativi, e non installa nulla nel sistema.
 - Non e' firmato digitalmente.
 
 ---
@@ -72,6 +85,8 @@ Guida completa, disinstallazione e problemi comuni:
 
 - **Windows 10** o successivo, 64 bit
 - **No Man's Sky** su Steam, Xbox PC / Game Pass o GOG
+
+Il pacchetto e' **autosufficiente**: non serve installare .NET.
 
 ---
 

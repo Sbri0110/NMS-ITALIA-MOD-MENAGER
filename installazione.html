@@ -149,19 +149,29 @@
       <p class="titolo">Nessun account richiesto</p>
       <p style="margin:0">
         Nessuna registrazione, nessuna attivazione, nessuna email. Il programma non
-        invia nulla in rete se non premi un pulsante.
+        invia nulla in rete se non premi un pulsante. L'unica eccezione è il
+        controllo degli aggiornamenti all'avvio, che è <strong>disattivato per
+        impostazione predefinita</strong>.
       </p>
     </div>
 
     <h3>La chiave API di Nexus Mods è opzionale</h3>
     <p>
-      Serve <strong>solo</strong> per le funzioni online: controllo degli aggiornamenti
-      delle mod a partire dalla loro pagina su Nexus.
+      Serve <strong>solo</strong> per le funzioni online: controllare gli
+      aggiornamenti delle mod a partire dalla loro pagina su Nexus, e scaricarle
+      e installarle senza passare dal browser.
     </p>
     <p>
-      Tutto il resto — installazione, profili, backup, conflitti, diagnostica —
-      funziona senza. Se non la inserisci, il programma dichiara le funzioni online
-      come non disponibili invece di farle fallire.
+      Per il download serve un account <strong>Premium</strong>, oppure — con un
+      account gratuito — il collegamento <code>.nxm</code> che il sito genera
+      premendo "Mod Manager Download". Non è una limitazione del programma: è
+      Nexus a richiederlo, e il programma lo dichiara prima che tu provi.
+    </p>
+    <p>
+      Tutto il resto — installazione da archivio, profili, backup, conflitti,
+      diagnostica, avvio del gioco — funziona senza chiave. Se non la inserisci,
+      il programma dichiara le funzioni online come non disponibili invece di
+      farle fallire.
     </p>
     <p>Per inserirla:</p>
     <ol>
@@ -291,10 +301,30 @@
       qualunque sia il loro stato individuale.
     </p>
 
-    <h3>Il controllo degli aggiornamenti non funziona</h3>
+    <h3>Il controllo degli aggiornamenti delle mod non funziona</h3>
     <p>
       Serve la chiave API di Nexus. Senza, il programma lo dichiara invece di fallire
       in silenzio.
+    </p>
+
+    <h3>Il controllo degli aggiornamenti del programma non funziona</h3>
+    <p>
+      Il controllo degli aggiornamenti <em>del programma</em> è un'altra cosa
+      rispetto a quello delle mod, e non richiede alcuna chiave: legge le release
+      dal repository pubblico su GitHub.
+    </p>
+    <p>
+      Se non funziona, le cause tipiche sono due: GitHub limita le richieste
+      anonime, e risponde "temporaneamente rifiutata" — basta riprovare dopo
+      qualche minuto; oppure la rete è bloccata. In entrambi i casi il programma
+      funziona per intero, e puoi sempre scaricare la nuova versione dalla
+      <a href="https://github.com/Sbri0110/NMS-ITALIA-MOD-MENAGER/releases">pagina
+      delle release</a>.
+    </p>
+    <p>
+      Ricorda che il controllo all'avvio è disattivato per impostazione
+      predefinita: se non l'hai attivato, il programma non controlla nulla da
+      solo, e devi premere "Controlla" nelle Impostazioni.
     </p>
 
     <h3>Il programma non si avvia</h3>
