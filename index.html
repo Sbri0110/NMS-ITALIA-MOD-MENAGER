@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NMS ITALIA MOD MENAGER — gestore di mod per No Man's Sky</title>
+<meta name="description" content="Gestore di mod per No Man's Sky, in italiano: rileva il gioco, installa e rimuove le mod, trova i conflitti reali e diagnostica i problemi. Gratuito, per Windows.">
+<meta property="og:title" content="NMS ITALIA MOD MENAGER">
+<meta property="og:description" content="Il centro di controllo definitivo per le mod di No Man's Sky. Gratuito, in italiano, per Windows.">
+<meta property="og:image" content="docs/immagini/lockup.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="docs/immagini/icona.png">
+<link rel="stylesheet" href="stile.css">
+</head>
+<body>
+
+<header>
+  <div class="contenitore">
+    <img class="marchio" src="docs/immagini/lockup.png" alt="NMS ITALIA MOD MENAGER">
+    <h1>Il centro di controllo definitivo<br>per le mod di No Man's Sky</h1>
+    <p class="tagline">Gestisce le mod, trova i conflitti reali e spiega cosa non va. In italiano.</p>
+    <p class="avviso">
+      Progetto community non ufficiale. Non affiliato né approvato da Hello Games.<br>
+      Sviluppato con l'aiuto dell'intelligenza artificiale, in modo dichiarato.
+    </p>
+    <div class="pulsanti">
+      <a class="bottone primario" href="https://github.com/Sbri0110/NMS-ITALIA-MOD-MENAGER/releases/latest">Scarica per Windows</a>
+      <a class="bottone secondario" href="installazione.html">Guida all'installazione</a>
+      <a class="bottone secondario" href="https://discord.gg/KB2NbjCW6h">Entra nel Discord</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="contenitore">
+    <h2>Che cos'è</h2>
+    <p>
+      Un gestore di mod per No Man's Sky, pensato per la community italiana.
+      L'obiettivo non è copiare file in una cartella: è <strong>capire lo stato del
+      modding e spiegarlo</strong>.
+    </p>
+    <p>Deve rispondere a domande come queste, in italiano e con il motivo:</p>
+    <ul>
+      <li>cosa ho installato?</li>
+      <li>perché questa mod non funziona?</li>
+      <li>quale mod mi sta facendo crashare il gioco?</li>
+      <li>cosa è cambiato dopo l'aggiornamento del gioco?</li>
+      <li>come torno a una configurazione che funzionava?</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="contenitore">
+    <h2>Cosa fa</h2>
+    <div class="funzione"><b>Rileva il gioco da solo.</b> <span>Steam, Xbox PC / Game Pass, GOG, oppure la cartella indicata a mano — validata come tutte le altre.</span></div>
+    <div class="funzione"><b>Installa e rimuove le mod.</b> <span>Da archivi ZIP, 7Z e RAR. Ogni operazione è reversibile: un errore a metà lascia il gioco esattamente com'era.</span></div>
+    <div class="funzione"><b>Attiva e disattiva una singola mod.</b> <span>Usa i meccanismi nativi del gioco: non sposta e non rinomina nulla. Così funziona anche la Safe Mode.</span></div>
+    <div class="funzione"><b>Trova i conflitti reali.</b> <span>Due mod che toccano lo stesso file ma proprietà diverse <em>non</em> vengono segnalate come in conflitto. I falsi positivi rendono inutili gli avvisi.</span></div>
+    <div class="funzione"><b>Diagnostica completa.</b> <span>Undici controlli in sola lettura, ognuno con la spiegazione di cosa significa e cosa fare. Un controllo che non si può eseguire viene dichiarato, non omesso.</span></div>
+    <div class="funzione"><b>Trova la mod problematica.</b> <span>Per bisezione: con cinquanta mod servono sei avvii del gioco, non cinquanta. Lo stato di partenza viene sempre ripristinato.</span></div>
+    <div class="funzione"><b>Profili, backup e ripristino.</b> <span>Insiemi di mod attive applicabili e confrontabili senza toccare i file.</span></div>
+    <div class="funzione"><b>Installa da Nexus Mods.</b> <span>Tramite API ufficiali, senza passare dal browser.</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="contenitore">
+    <h2>Cosa non fa</h2>
+    <ul>
+      <li>Non analizza i file <code>.MBIN</code> senza MBINCompiler della versione giusta. Il formato binario viene ricostruito dalla comunità a ogni aggiornamento del gioco, e riscriverlo qui significherebbe duplicare un lavoro mantenuto altrove.</li>
+      <li><strong>Non esegue mai</strong> codice contenuto in una mod.</li>
+      <li>Non invia nulla in rete se non premi un pulsante.</li>
+      <li>Non è firmato digitalmente.</li>
+    </ul>
+    <p style="color:var(--testo-tenue)">
+      Le funzioni non ancora realizzate sono dichiarate dentro il programma con la
+      fase in cui arriveranno. Nessun pulsante che finge di funzionare.
+    </p>
+  </div>
+</section>
+
+<section id="installazione">
+  <div class="contenitore">
+    <h2>Installazione in tre passi</h2>
+    <p style="color:var(--testo-tenue)">
+      Non serve installare nulla: il pacchetto contiene già tutto, runtime compreso.
+      Non serve nemmeno una connessione a Internet.
+    </p>
+
+    <div class="passo">
+      <span class="numero">1</span><h3>Scarica l'archivio</h3>
+      <p>
+        Vai nella <a href="https://github.com/Sbri0110/NMS-ITALIA-MOD-MENAGER/releases/latest">pagina delle release</a>
+        e scarica <code>NMSItalia.ModMenager.zip</code>.
+      </p>
+    </div>
+
+    <div class="passo">
+      <span class="numero">2</span><h3>Scompattalo dove preferisci</h3>
+      <p>
+        Va bene ovunque: sul Desktop, in <code>C:\Programmi</code>, su un'altra unità.
+        <strong>Non</strong> scompattarlo dentro la cartella di No Man's Sky.
+      </p>
+    </div>
+
+    <div class="passo">
+      <span class="numero">3</span><h3>Avvia il programma</h3>
+      <p>
+        Doppio clic su <code>NMSItalia.ModMenager.App.exe</code>. È l'unico file
+        <code>.exe</code> nella cartella: non c'è modo di sbagliare.
+      </p>
+    </div>
+
+    <div class="riquadro attenzione">
+      <p class="titolo">Al primo avvio</p>
+      <p style="margin:0">
+        Windows mostrerà <strong>"Windows ha protetto il PC"</strong>. Succede per
+        qualsiasi programma non firmato digitalmente. Clicca
+        <strong>"Ulteriori informazioni"</strong>, poi <strong>"Esegui comunque"</strong>.
+        Non è un errore e non significa che il file sia danneggiato.
+      </p>
+    </div>
+
+    <p>
+      <a href="installazione.html">Guida completa: requisiti, primo avvio, problemi comuni e disinstallazione →</a>
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="contenitore">
+    <h2>Prima di installare una mod</h2>
+    <p>
+      <strong>Le guide in circolazione sono in gran parte obsolete.</strong> Da
+      <strong>Worlds Part II</strong> (No Man's Sky 5.50 e successivi) Hello Games ha
+      riscritto il sistema di modding.
+    </p>
+    <table>
+      <tr><th></th><th>Prima</th><th>Adesso</th></tr>
+      <tr><td>Dove vanno</td><td><code>PCBANKS\MODS</code></td><td><code>GAMEDATA\MODS</code></td></tr>
+      <tr><td>Formato</td><td>un file <code>.pak</code> per mod</td><td>una <strong>cartella</strong> per mod</td></tr>
+      <tr><td>Come si applicano</td><td>sostituiscono file interi</td><td><code>.MBIN</code> sostituisce, <code>.EXML</code> modifica solo le proprietà dichiarate</td></tr>
+    </table>
+    <p>Conseguenze pratiche:</p>
+    <ul>
+      <li>una mod in <code>PCBANKS\MODS</code> <strong>non verrà caricata</strong>;</li>
+      <li>una mod <code>.pak</code> <strong>probabilmente non funziona</strong>;</li>
+      <li>un file <code>.MXML</code> <strong>non funziona</strong> (unica eccezione <code>LocTable.MXML</code>);</li>
+      <li>le mod non aggiornate <strong>prima del 29 gennaio 2025</strong> non funzionano con 5.50+.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="contenitore">
+    <h2>Requisiti</h2>
+    <ul>
+      <li><strong>Windows 10</strong> o successivo, 64 bit</li>
+      <li><strong>No Man's Sky</strong> su Steam, Xbox PC / Game Pass o GOG</li>
+    </ul>
+    <p style="color:var(--testo-tenue)">
+      Il pacchetto è autosufficiente: non richiede l'installazione di .NET.
+      Circa 49 MB compressi, la maggior parte dei quali è il runtime incluso.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="contenitore">
+    <h2>Community</h2>
+    <div class="discord">
+      <p style="margin-top:0">
+        Il progetto nasce e vive nel server <strong>NMS Italia</strong> su Discord:
+        supporto, segnalazioni e aggiornamenti.
+      </p>
+      <a href="https://discord.gg/KB2NbjCW6h">https://discord.gg/KB2NbjCW6h</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="contenitore">
+    <h2>Licenza</h2>
+    <p>
+      <strong>Proprietaria — tutti i diritti riservati.</strong> L'uso è
+      <strong>gratuito</strong>. Non sono consentiti la modifica, la
+      ridistribuzione, la vendita né l'ingegneria inversa.
+    </p>
+    <p>
+      Il codice sorgente <strong>non è distribuito e non è pubblico</strong>: il
+      programma è disponibile solo in forma compilata.
+    </p>
+    <p style="color:var(--testo-tenue)">
+      "No Man's Sky" e "Hello Games" sono marchi dei rispettivi titolari, citati
+      unicamente in forma descrittiva. Le librerie di terze parti e le loro licenze
+      sono elencate in <a href="https://github.com/Sbri0110/NMS-ITALIA-MOD-MENAGER/blob/main/THIRD_PARTY_NOTICES.md">THIRD_PARTY_NOTICES.md</a>.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="contenitore">
+    <nav class="sopra">
+      <a href="installazione.html">Installazione</a>
+      <a href="https://github.com/Sbri0110/NMS-ITALIA-MOD-MENAGER">Repository</a>
+      <a href="https://github.com/Sbri0110/NMS-ITALIA-MOD-MENAGER/releases/latest">Download</a>
+      <a href="https://discord.gg/KB2NbjCW6h">Discord</a>
+    </nav>
+    <p>NMS ITALIA MOD MENAGER — progetto community non ufficiale, non affiliato né approvato da Hello Games.</p>
+    <p>Sviluppato con l'aiuto dell'intelligenza artificiale, in modo dichiarato.</p>
+  </div>
+</footer>
+
+</body>
+</html>

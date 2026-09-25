@@ -38,6 +38,7 @@ digitalmente. "Ulteriori informazioni" → "Esegui comunque".
 
 Guida completa, disinstallazione e problemi comuni:
 **[`docs/INSTALLAZIONE.md`](docs/INSTALLAZIONE.md)**
+— oppure online, con le figure: **[guida all'installazione](https://sbri0110.github.io/NMS-ITALIA-MOD-MENAGER/installazione.html)**
 
 ---
 
@@ -94,6 +95,8 @@ Il progetto nasce e vive nel server **NMS Italia** su Discord: supporto,
 segnalazioni e aggiornamenti.
 
 ### <https://discord.gg/KB2NbjCW6h>
+
+**Sito del progetto:** <https://sbri0110.github.io/NMS-ITALIA-MOD-MENAGER/>
 
 ---
 

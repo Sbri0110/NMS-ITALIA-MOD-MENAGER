@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Installazione — NMS ITALIA MOD MENAGER</title>
+<meta name="description" content="Come installare e avviare NMS ITALIA MOD MENAGER: requisiti, primo avvio, installazione delle mod, verifica dell'integrità, disinstallazione e problemi comuni.">
+<link rel="icon" href="docs/immagini/icona.png">
+<link rel="stylesheet" href="stile.css">
+</head>
+<body>
+
+<header>
+  <div class="contenitore">
+    <img class="marchio" src="docs/immagini/lockup.png" alt="NMS ITALIA MOD MENAGER">
+    <h1>Come si installa</h1>
+    <p class="tagline">Guida completa: dal download al primo avvio, e cosa fare se qualcosa non va.</p>
+    <div class="pulsanti">
+      <a class="bottone primario" href="https://github.com/Sbri0110/NMS-ITALIA-MOD-MENAGER/releases/latest">Scarica per Windows</a>
+      <a class="bottone secondario" href="index.html">Torna alla presentazione</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="contenitore">
+    <div class="sommario">
+      <p class="titolo" style="font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--testo-tenue);margin:0 0 10px">In questa pagina</p>
+      <ol>
+        <li><a href="#requisiti">Requisiti</a></li>
+        <li><a href="#scaricare">Scaricare il pacchetto</a></li>
+        <li><a href="#avviare">Avviare il programma</a></li>
+        <li><a href="#primo-avvio">Il primo avvio</a></li>
+        <li><a href="#mod">Installare la prima mod</a></li>
+        <li><a href="#integrita">Verificare l'integrità del file</a></li>
+        <li><a href="#disinstallare">Disinstallare</a></li>
+        <li><a href="#problemi">Problemi comuni</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="requisiti">
+  <div class="contenitore">
+    <h2>1. Requisiti</h2>
+    <table>
+      <tr><th></th><th></th></tr>
+      <tr><td><strong>Sistema</strong></td><td>Windows 10 o successivo, 64 bit</td></tr>
+      <tr><td><strong>Gioco</strong></td><td>No Man's Sky su Steam, Xbox PC / Game Pass o GOG</td></tr>
+      <tr><td><strong>Runtime .NET</strong></td><td><strong>Non serve</strong> — è incluso nel pacchetto</td></tr>
+      <tr><td><strong>Connessione</strong></td><td><strong>Non serve</strong> — il programma funziona per intero offline</td></tr>
+    </table>
+    <p style="color:var(--testo-tenue)">
+      Il programma non si installa nel senso tradizionale: non c'è un programma di
+      installazione, non scrive nel registro di sistema e non tocca le cartelle di
+      Windows. Si estrae e si avvia.
+    </p>
+  </div>
+</section>
+
+<section id="scaricare">
+  <div class="contenitore">
+    <h2>2. Scaricare il pacchetto</h2>
+    <p>
+      Scarica <code>NMSItalia.ModMenager.zip</code> dalla
+      <a href="https://github.com/Sbri0110/NMS-ITALIA-MOD-MENAGER/releases/latest">pagina delle release</a>
+      e scompattalo dove preferisci.
+    </p>
+    <p>
+      Va bene ovunque: sul Desktop, in <code>C:\Programmi</code>, su un'altra unità.
+      Il programma non ha bisogno di stare in un posto preciso.
+    </p>
+    <div class="riquadro attenzione">
+      <p class="titolo">Non scompattarlo qui</p>
+      <p style="margin:0">
+        <strong>Non</strong> dentro la cartella di No Man's Sky. Il programma
+        modifica quella cartella quando installa una mod, e non deve viverci dentro.
+      </p>
+    </div>
+    <div class="riquadro">
+      <p class="titolo">Scarica solo dai canali ufficiali</p>
+      <p style="margin:0">
+        La pagina delle release e il Discord di NMS Italia. Una copia presa altrove
+        non è verificabile: il programma non è firmato digitalmente, quindi non
+        esiste un modo per riconoscere una versione manomessa se non confrontando
+        l'hash (vedi il punto 6).
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="avviare">
+  <div class="contenitore">
+    <h2>3. Avviare il programma</h2>
+    <p>Doppio clic su <strong><code>NMSItalia.ModMenager.App.exe</code></strong>.</p>
+    <p>
+      <strong>È l'unico file <code>.exe</code> nella cartella.</strong> Gli altri file
+      — qualche centinaio di <code>.dll</code> — sono il motore del programma: non
+      vanno aperti, spostati né toccati.
+    </p>
+    <p>
+      Non spostare l'eseguibile fuori dalla sua cartella: ha bisogno dei file che
+      gli stanno accanto. Per averlo sul Desktop, crea un <strong>collegamento</strong>:
+      tasto destro sul file → <em>Invia a</em> → <em>Desktop</em>.
+    </p>
+
+    <h3>L'avviso di Windows</h3>
+    <p>
+      Al primo avvio è probabile che compaia <strong>"Windows ha protetto il PC"</strong>
+      (SmartScreen).
+    </p>
+    <p>
+      Succede per qualsiasi programma non firmato digitalmente. Una firma digitale
+      costa alcune centinaia di euro l'anno e questo è un progetto amatoriale
+      gratuito, quindi non c'è.
+    </p>
+    <p>Per procedere:</p>
+    <ol>
+      <li>clicca <strong>"Ulteriori informazioni"</strong>;</li>
+      <li>clicca <strong>"Esegui comunque"</strong>.</li>
+    </ol>
+    <p>
+      Non è un errore e non significa che il file sia danneggiato. Se vuoi essere
+      sicuro che sia arrivato integro, confronta il suo hash con quello pubblicato
+      nella release (punto 6).
+    </p>
+  </div>
+</section>
+
+<section id="primo-avvio">
+  <div class="contenitore">
+    <h2>4. Il primo avvio</h2>
+    <p>
+      Il programma cerca No Man's Sky da solo e ne valida l'installazione: non basta
+      che la cartella esista, deve contenere un gioco. Se lo trova, lo mostra nella
+      schermata <strong>Home</strong> con la versione rilevata.
+    </p>
+    <p>Se non lo trova:</p>
+    <ol>
+      <li>apri <strong>Impostazioni</strong>;</li>
+      <li>indica la cartella di installazione a mano.</li>
+    </ol>
+    <p>
+      La cartella da indicare è quella che contiene <code>Binaries</code> e
+      <code>GAMEDATA</code>, per esempio <code>C:\XboxGames\No Man's Sky\Content</code>.
+      Se scegli per errore una sottocartella, il programma risale da solo alla radice.
+    </p>
+    <div class="riquadro">
+      <p class="titolo">Nessun account richiesto</p>
+      <p style="margin:0">
+        Nessuna registrazione, nessuna attivazione, nessuna email. Il programma non
+        invia nulla in rete se non premi un pulsante.
+      </p>
+    </div>
+
+    <h3>La chiave API di Nexus Mods è opzionale</h3>
+    <p>
+      Serve <strong>solo</strong> per le funzioni online: controllo degli aggiornamenti
+      delle mod a partire dalla loro pagina su Nexus.
+    </p>
+    <p>
+      Tutto il resto — installazione, profili, backup, conflitti, diagnostica —
+      funziona senza. Se non la inserisci, il programma dichiara le funzioni online
+      come non disponibili invece di farle fallire.
+    </p>
+    <p>Per inserirla:</p>
+    <ol>
+      <li>apri la pagina <code>https://www.nexusmods.com/settings/api-keys</code> nel browser e genera una chiave personale;</li>
+      <li>copiala;</li>
+      <li>in <strong>Impostazioni</strong>, incollala nel campo e premi <strong>"Salva e verifica"</strong>.</li>
+    </ol>
+    <p>
+      La chiave viene conservata nel <strong>Credential Manager di Windows</strong>,
+      legata al tuo account. Non viene scritta in nessun file di configurazione, non
+      viene mai mostrata dopo il salvataggio e non compare nei registri.
+    </p>
+  </div>
+</section>
+
+<section id="mod">
+  <div class="contenitore">
+    <h2>5. Installare la prima mod</h2>
+    <ol>
+      <li><strong>Le mie mod</strong> → <strong>Installa da archivio</strong>;</li>
+      <li>scegli il file <code>.zip</code>, <code>.7z</code> o <code>.rar</code> scaricato da Nexus;</li>
+      <li>il programma analizza l'archivio <strong>prima</strong> di toccare qualsiasi cosa e mostra cosa contiene;</li>
+      <li>conferma.</li>
+    </ol>
+    <p>
+      Il programma colloca la mod in <code>GAMEDATA\MODS</code>, che è il percorso
+      corretto dal sistema introdotto con Worlds Part II. Non devi sapere dove va.
+    </p>
+
+    <h3>Dopo l'installazione</h3>
+    <p>
+      Alcune operazioni richiedono che il gioco abbia <strong>registrato</strong> la
+      mod almeno una volta. La registrazione avviene al primo avvio del gioco
+      successivo all'installazione.
+    </p>
+    <p>
+      Se provi ad attivare o disattivare una mod appena installata e il programma dice
+      che non è ancora registrata, avvia No Man's Sky una volta e riprova. Non è un
+      difetto: il programma non può attivare una mod che il gioco non conosce ancora.
+    </p>
+
+    <h3>Dove finiscono i tuoi dati</h3>
+    <p>Tutto in una cartella sola, sotto il tuo profilo:</p>
+    <pre><code>%LOCALAPPDATA%\NMS ITALIA MOD MENAGER\
+    logs\          registri di funzionamento
+    settings\      impostazioni
+    data\          catalogo delle mod e profili
+    backups\       copie di sicurezza delle configurazioni di mod
+    transactions\  giornali delle operazioni, per il ripristino</code></pre>
+    <p>Per aprirla: premi <code>Win+R</code>, incolla il percorso, invio.</p>
+  </div>
+</section>
+
+<section id="integrita">
+  <div class="contenitore">
+    <h2>6. Verificare l'integrità del file</h2>
+    <p>
+      Ogni release pubblica l'hash <strong>SHA-256</strong> dell'archivio. È l'unica
+      verifica possibile, perché il programma non è firmato digitalmente: se il file
+      fosse stato manomesso lungo il percorso, l'hash non corrisponderebbe.
+    </p>
+    <p>Su Windows, in PowerShell, nella cartella dove hai scaricato l'archivio:</p>
+    <pre><code>Get-FileHash .\NMSItalia.ModMenager.zip -Algorithm SHA256</code></pre>
+    <p>
+      Confronta il valore ottenuto con quello scritto nella pagina della release.
+      <strong>Se non corrisponde, non usare il file</strong> e segnalalo sul Discord.
+    </p>
+  </div>
+</section>
+
+<section id="disinstallare">
+  <div class="contenitore">
+    <h2>7. Disinstallare</h2>
+    <ol>
+      <li>cancella la cartella del programma (quella dove hai scompattato lo zip);</li>
+      <li>cancella <code>%LOCALAPPDATA%\NMS ITALIA MOD MENAGER\</code>;</li>
+      <li>se avevi inserito la chiave API: in <strong>Impostazioni</strong>, premi
+        <strong>"Rimuovi"</strong> <em>prima</em> di cancellare la cartella, così la
+        chiave viene tolta dal Credential Manager.</li>
+    </ol>
+    <div class="riquadro attenzione">
+      <p class="titolo">Attenzione al punto 2</p>
+      <p style="margin:0">
+        Cancellando quella cartella perdi i profili, le copie di sicurezza e il
+        catalogo delle mod. Le mod installate nella cartella del gioco
+        <strong>non</strong> vengono toccate: se vuoi rimuoverle, fallo dal programma
+        prima di disinstallarlo.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="problemi">
+  <div class="contenitore">
+    <h2>8. Problemi comuni</h2>
+
+    <h3>Il programma si apre e non trova il gioco</h3>
+    <p>
+      La cartella indicata a mano deve contenere <code>Binaries</code> e
+      <code>GAMEDATA</code>. Se hai indicato la cartella sbagliata, il programma lo
+      dice: la validazione strutturale non si limita a controllare che la cartella
+      esista.
+    </p>
+
+    <h3>Una mod è installata ma nel gioco non cambia nulla</h3>
+    <p>
+      Apri <strong>Diagnostica</strong> → <strong>Ripeti la verifica</strong>. Il
+      controllo "Mod che non produrranno alcun effetto" spiega se la mod è confezionata
+      per il vecchio sistema a <code>.pak</code> o con estensioni che il gioco non
+      legge più.
+    </p>
+    <p>È la causa più frequente, e non dipende da te.</p>
+
+    <h3>Il gioco si chiude all'avvio e non so quale mod sia</h3>
+    <p>
+      <strong>Diagnostica</strong> → <strong>Inizia la ricerca</strong>.
+      Disattiva metà delle mod e ti chiede di avviare il gioco; a seconda di cosa
+      riferisci, restringe il campo. Con cinquanta mod servono sei avvii, non
+      cinquanta.
+    </p>
+    <p>Le mod tornano allo stato di partenza appena finisce, e anche se interrompi.</p>
+
+    <h3>Nessuna mod funziona, tutte insieme</h3>
+    <p>
+      <strong>Diagnostica</strong> → cerca il controllo "Safe Mode attivo".
+      Se il gioco è impostato per ignorare tutte le mod, nessuna viene caricata
+      qualunque sia il loro stato individuale.
+    </p>
+
+    <h3>Il controllo degli aggiornamenti non funziona</h3>
+    <p>
+      Serve la chiave API di Nexus. Senza, il programma lo dichiara invece di fallire
+      in silenzio.
+    </p>
+
+    <h3>Il programma non si avvia</h3>
+    <p>
+      Controlla che Windows sia a 64 bit: il pacchetto contiene solo l'esecuzione a
+      64 bit.
+    </p>
+    <p>
+      Se il pacchetto è stato estratto con un programma che ha alterato i file — per
+      esempio scompattando solo l'eseguibile e non il resto — riestrai l'archivio per
+      intero in una cartella vuota. L'eseguibile ha bisogno delle <code>.dll</code>
+      che gli stanno accanto.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="contenitore">
+    <h2>Serve una mano?</h2>
+    <div class="discord">
+      <p style="margin-top:0">
+        Entra nel <strong>Discord di NMS Italia</strong>: è il posto dove si trovano
+        supporto, segnalazioni e aggiornamenti.
+      </p>
+      <a href="https://discord.gg/KB2NbjCW6h">https://discord.gg/KB2NbjCW6h</a>
+      <p style="margin-bottom:0;margin-top:16px;color:var(--testo-tenue);font-size:0.92rem">
+        Quando chiedi aiuto per un problema, allega il <strong>report diagnostico</strong>
+        che il programma esporta dalla sezione Diagnostica: contiene cosa ha verificato
+        e cosa ha trovato, e fa risparmiare parecchi passaggi.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="contenitore">
+    <nav class="sopra">
+      <a href="index.html">Presentazione</a>
+      <a href="https://github.com/Sbri0110/NMS-ITALIA-MOD-MENAGER">Repository</a>
+      <a href="https://github.com/Sbri0110/NMS-ITALIA-MOD-MENAGER/releases/latest">Download</a>
+      <a href="https://discord.gg/KB2NbjCW6h">Discord</a>
+    </nav>
+    <p>NMS ITALIA MOD MENAGER — progetto community non ufficiale, non affiliato né approvato da Hello Games.</p>
+    <p>Sviluppato con l'aiuto dell'intelligenza artificiale, in modo dichiarato.</p>
+  </div>
+</footer>
+
+</body>
+</html>

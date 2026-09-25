@@ -1,0 +1,187 @@
+/* NMS ITALIA MOD MENAGER — foglio di stile del sito.
+   Nessuna risorsa esterna: niente font remoti, niente CDN. Il sito funziona
+   anche offline, come il programma. */
+
+:root {
+  --sfondo: #070A0F;
+  --superficie: #0E141B;
+  --superficie-alta: #141C25;
+  --bordo: #1F2A36;
+  --testo: #E8EEF4;
+  --testo-tenue: #93A6BB;
+  --accento: #3FE0C8;
+  --rosso: #E4483C;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--sfondo);
+  color: var(--testo);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.contenitore { max-width: 900px; margin: 0 auto; padding: 0 22px; }
+a { color: var(--accento); }
+
+/* --- Intestazione --- */
+header {
+  border-bottom: 1px solid var(--bordo);
+  background: linear-gradient(180deg, #0A1017 0%, var(--sfondo) 100%);
+  padding: 34px 0 40px;
+}
+.marchio { max-width: 340px; width: 100%; height: auto; display: block; }
+h1 {
+  font-size: 2.1rem;
+  margin: 26px 0 6px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.tagline { color: var(--testo-tenue); font-size: 1.12rem; margin: 0 0 22px; }
+.avviso {
+  color: var(--testo-tenue);
+  font-size: 0.9rem;
+  border-left: 2px solid var(--bordo);
+  padding-left: 14px;
+  margin: 0 0 26px;
+}
+
+/* --- Pulsanti --- */
+.pulsanti { display: flex; flex-wrap: wrap; gap: 12px; }
+.bottone {
+  display: inline-block;
+  padding: 13px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: opacity 0.15s;
+}
+.bottone:hover { opacity: 0.85; }
+.primario { background: var(--accento); color: #04231F; }
+.secondario { border-color: var(--bordo); color: var(--testo); background: var(--superficie); }
+
+/* --- Sezioni --- */
+section { padding: 46px 0; border-bottom: 1px solid var(--bordo); }
+h2 { font-size: 1.42rem; margin: 0 0 18px; letter-spacing: -0.01em; }
+h3 { font-size: 1.05rem; margin: 26px 0 8px; }
+p { margin: 0 0 14px; }
+ul { padding-left: 22px; margin: 0 0 14px; }
+li { margin-bottom: 9px; }
+ol { padding-left: 22px; }
+code {
+  background: var(--superficie-alta);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: Consolas, "DejaVu Sans Mono", monospace;
+}
+pre {
+  background: var(--superficie-alta);
+  border: 1px solid var(--bordo);
+  border-radius: 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-size: 0.88rem;
+}
+pre code { background: none; padding: 0; }
+
+/* --- Elenchi con titolo --- */
+.funzione { margin-bottom: 14px; }
+.funzione b { color: var(--testo); }
+.funzione span { color: var(--testo-tenue); }
+
+/* --- Passi --- */
+.passo {
+  background: var(--superficie);
+  border: 1px solid var(--bordo);
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin-bottom: 14px;
+}
+.passo .numero {
+  display: inline-block;
+  width: 26px; height: 26px;
+  line-height: 26px;
+  text-align: center;
+  border-radius: 50%;
+  background: var(--accento);
+  color: #04231F;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-right: 10px;
+}
+.passo h3 { display: inline; margin: 0; font-size: 1.05rem; }
+.passo p { margin: 10px 0 0; color: var(--testo-tenue); }
+.passo p:first-of-type { margin-top: 12px; }
+
+/* --- Riquadri --- */
+.riquadro {
+  background: var(--superficie);
+  border: 1px solid var(--bordo);
+  border-left: 3px solid var(--accento);
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin: 18px 0;
+}
+.riquadro.attenzione { border-left-color: var(--rosso); }
+.riquadro .titolo {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--testo-tenue);
+  margin: 0 0 6px;
+}
+
+/* --- Tabella --- */
+table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.94rem; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--bordo); }
+th {
+  color: var(--testo-tenue);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* --- Discord --- */
+.discord {
+  background: var(--superficie);
+  border: 1px solid var(--bordo);
+  border-radius: 10px;
+  padding: 26px;
+  text-align: center;
+}
+.discord a { font-size: 1.2rem; font-weight: 600; word-break: break-all; }
+
+/* --- Navigazione e piè di pagina --- */
+footer {
+  padding: 34px 0 46px;
+  color: var(--testo-tenue);
+  font-size: 0.87rem;
+}
+footer p { margin: 0 0 8px; }
+nav.sopra { margin-bottom: 20px; font-size: 0.92rem; }
+nav.sopra a { margin-right: 18px; text-decoration: none; }
+nav.sopra a:hover { text-decoration: underline; }
+
+/* --- Sommario della guida --- */
+.sommario {
+  background: var(--superficie);
+  border: 1px solid var(--bordo);
+  border-radius: 10px;
+  padding: 18px 22px;
+}
+.sommario ol { margin: 0; }
+.sommario li { margin-bottom: 6px; }
+
+@media (max-width: 620px) {
+  h1 { font-size: 1.6rem; }
+  .marchio { max-width: 260px; }
+  section { padding: 34px 0; }
+}
