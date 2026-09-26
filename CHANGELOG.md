@@ -5,6 +5,83 @@ Le versioni seguono [Versionamento Semantico](https://semver.org/lang/it/).
 
 ---
 
+## 1.2.0 — 26 settembre 2026
+
+Chiude le ultime due funzioni dichiarate come mancanti. La lista "NON ANCORA
+DISPONIBILE" nella dashboard ora e' vuota, e la sezione non viene piu' mostrata.
+
+### Fusione di due mod in conflitto
+
+- Quando due mod dichiarano la stessa proprieta' con valori diversi, la
+  schermata **Conflitti** permette di costruirne una terza che contiene il
+  contributo di entrambe, con una scelta esplicita sui punti in contrasto.
+- **Non serve MBINCompiler.** Il commento precedente dava per scontato che la
+  fusione richiedesse di leggere i valori originali del gioco: era una
+  supposizione, non un vincolo. Unire due patch `.EXML` e' un'operazione
+  sull'XML, e la funzione non dipende dallo strumento esterno.
+- Il valore originale del gioco **non** viene mostrato, e non e' una mancanza
+  rimediabile: i file di base stanno dentro gli archivi `.pak` di
+  `GAMEDATA\PCBANKS`. La scelta avviene fra i valori proposti dalle due mod.
+- Il piano viene mostrato **prima** di scrivere qualsiasi cosa: cosa viene
+  unito, cosa viene copiato, cosa resta fuori e cosa impedisce la fusione.
+- **Un piano incompleto non si applica.** Se anche un solo file non e' unibile —
+  due `.MBIN` con lo stesso nome, per esempio — la fusione viene rifiutata con
+  il motivo, invece di produrre una mod incompleta che prenderebbe il posto
+  delle due originali.
+- La mod unita viene installata dallo **stesso installatore** di una mod
+  normale: passa dall'analisi preventiva, dal motore transazionale e
+  dall'allineamento del file di stato del gioco.
+- Le due mod originali vengono **disattivate**, su scelta dell'utente e proposta
+  attiva di default: senza quel passaggio la fusione non risolverebbe nulla.
+- Il file unito viene **riletto e verificato** prima di essere installato: se
+  una scelta dell'utente non compare nel risultato, la fusione fallisce.
+
+### Analisi dei file `.MXML`
+
+- **Il formato si chiama `.MXML`, non `.MBXML`.** La voce precedente era
+  sbagliata: `.MBXML` non compare in nessuna fonte del modding di No Man's Sky,
+  in nessuna versione di MBINCompiler e in nessuna guida. La verifica e le fonti
+  sono in `docs/FORMATO-MOD-NMS.md` §1.1.
+- Il programma **legge** i file `.MXML`: ne dichiara il template, quante
+  proprieta' contengono e se sono interpretabili.
+- **Avviso azionabile all'importazione.** Da Worlds Part II MBINCompiler produce
+  `.MXML`, ma il gioco applica solo `.EXML`: una mod consegnata con i `.MXML`
+  dentro non produce alcun effetto e non lo segnala. L'avviso dice cosa fare.
+- **Nuovo controllo `DIAG-MXML`** nella verifica diagnostica, che intercetta
+  anche le mod gia' installate.
+- **Il limite dell'analisi e' dichiarato nel programma.** L'analisi del
+  *contenuto* di un `.MXML` richiede una cartella gia' estratta: su un archivio
+  compresso non ancora estratto si puo' dire solo che i file ci sono e che vanno
+  rinominati. In quel caso l'avviso lo scrive — *"il contenuto dei file non e'
+  stato letto"* — invece di lasciar credere di averlo esaminato. Lo stesso vale
+  per `DIAG-MXML`, che dichiara di basarsi sui nomi dei file.
+- **Il rimedio e' nel messaggio, non solo nel dettaglio tecnico.** La schermata
+  delle mod mostra il messaggio di un avviso e non il suo dettaglio: il
+  suggerimento "rinomina in `.EXML`" era scritto in una parte che nessuno
+  leggeva. Ora e' nel messaggio.
+- `LocTable.MXML` e' escluso dai due controlli: e' l'unico `.MXML` che il gioco
+  legge direttamente, e segnalarlo sarebbe un falso positivo.
+
+### Correzioni
+
+- **Il programma terminava con un'eccezione non gestita a ogni chiusura.** Alla
+  chiusura della finestra il contenitore dei servizi veniva rilasciato in modo
+  sincrono, ma contiene il database, che implementa **solo**
+  `IAsyncDisposable` perche' la sua chiusura comprende un checkpoint del journal
+  WAL. Su un contenitore con un servizio di quel tipo, `Dispose()` non fa un
+  lavoro parziale: lancia `InvalidOperationException`. L'effetto era un crash
+  dump in `%LOCALAPPDATA%\CrashDumps` a ogni chiusura e un codice di uscita
+  diverso da zero. Ora la chiusura e' asincrona e attesa: la finestra e' gia'
+  chiusa, e rinviarla a un'attivita' in background rischierebbe di perdere
+  proprio il checkpoint e i buffer del file di log. Verificato avviando il
+  programma e chiudendolo: nessuna eccezione, nessun crash dump.
+- L'avviso sui file che il gioco non legge univa `.MXML` e `.PAK` in un unico
+  messaggio che diceva, per entrambi, "estensione non piu' supportata". Per un
+  `.MXML` e' falso: il formato e' quello giusto, manca la rinominazione in
+  `.EXML`. I due casi hanno cause e rimedi diversi e ora sono avvisi distinti.
+
+---
+
 ## 1.1.1 — 25 settembre 2026
 
 Corregge un difetto della 1.1.0 che rendeva inutilizzabili due sezioni.

@@ -77,6 +77,44 @@ Questo e' esattamente cio' che il capitolato chiede al punto 11, ed e' anche
 cio' che il motore di analisi deve implementare per non produrre falsi positivi
 che renderebbero il software inutilizzabile.
 
+### 1.1 La forma leggibile: da `.EXML` a `.MXML`
+
+> **VERIFICATO il 26 settembre 2026** su fonti primarie: il README del
+> repository `monkeyman192/MBINCompiler` e la sua documentazione utente.
+
+Con Worlds Part II e' cambiata anche la forma leggibile che MBINCompiler
+produce.
+
+| | Prima di Worlds Part II | Adesso |
+|---|---|---|
+| MBINCompiler produce | `.EXML` | **`.MXML`** |
+| Il gioco legge direttamente | `.EXML` | **`.EXML`** (invariato) |
+
+Il README dello strumento lo dichiara esplicitamente:
+
+> *"As of the Worlds part 2 update, MBINCompiler will no longer generate or
+> handle EXML files, and will instead handle MXML files. This is to (finally)
+> get MBINCompiler producing files in the same format as NMS expects. For
+> modding purposes the MXML are not the actual files you need to place in a mod
+> directory. To do this, you can rename the MXML file to EXML."*
+
+**Cosa significa in pratica.** Chi crea una mod decompila un `.MBIN` e ottiene
+un `.MXML`: e' la forma leggibile, ma **non e' il file che va messo nella
+cartella della mod**. Va rinominato in `.EXML` per essere applicato come patch
+parziale, oppure ricompilato in `.MBIN` per una sostituzione totale. Una mod
+consegnata con i `.MXML` dentro non produce **alcun effetto**, e il gioco non
+segnala nulla: e' indistinguibile da una mod che funziona male.
+
+**`.MXML` e `.EXML` sono lo stesso formato.** Cambia l'estensione, non la
+struttura: entrambi sono XML con radice `<Data template="...">` e proprieta'
+`<Property name="..." value="..." />`. Un lettore scritto per gli `.EXML` legge
+correttamente anche gli `.MXML`, ed e' esattamente quello che fa il programma.
+
+**`.MBXML` non esiste.** Non compare in nessuna fonte del modding di No Man's
+Sky, in nessuna versione di MBINCompiler e in nessuna guida. Le estensioni reali
+sono `.MBIN`, `.MXML` e `.EXML`, con `LocTable.MXML` come unica eccezione per la
+localizzazione. Un riferimento a `.MBXML` e' un refuso per `.MXML`.
+
 ---
 
 ## 2. Regole di installazione corrette
@@ -101,6 +139,7 @@ che renderebbero il software inutilizzabile.
 | La mod non cambia nulla | installata in `PCBANKS\MODS` | si: cartella sbagliata |
 | La mod non cambia nulla | cartella annidata di troppo | si: nome del primo livello numerico |
 | La mod non cambia nulla | file `.MXML` invece di `.EXML` | si: estensione |
+| La mod non cambia nulla | `.MXML` prodotto da MBINCompiler e non rinominato in `.EXML` | si: estensione, piu' il numero di proprieta' dichiarate lette dal file |
 | La mod non cambia nulla | file `.pak` in era 5.50+ | si: estensione |
 | Nessuna mod funziona | `DisableAllMods = true` | si: lettura `GCMODSETTINGS.MXML` |
 | Crash all'avvio | mod precedente a gen 2025 | si: confronto data/versione |
@@ -506,3 +545,15 @@ errate (punto 12 e punto 72).
 9. Il **download tramite API non e' disponibile sulla v3**. Finche' resta cosi',
    il comportamento e' quello gia' previsto: si apre la pagina della mod nel
    browser. Non si aggira il limite.
+10. La **forma leggibile** dei dati di gioco e' `.MXML` (prodotta da
+    MBINCompiler da Worlds Part II), ma il gioco applica solo `.EXML`. Il
+    programma legge entrambe — sono lo stesso formato XML — e **avvisa** quando
+    un file va rinominato, perche' una mod consegnata con i `.MXML` non produce
+    alcun effetto e non lo segnala. `.MBXML` **non esiste**: e' un refuso.
+11. **Due mod in conflitto possono essere unite.** Poiche' un `.EXML` dichiara
+    solo le proprieta' che modifica, unire due mod significa costruire l'unione
+    delle proprieta' dichiarate e scegliere esplicitamente un valore dove le due
+    si contraddicono. E' un'operazione sull'XML: **non richiede MBINCompiler**.
+    Due `.MBIN` con lo stesso nome, invece, **non si possono unire**: sono
+    sostituzioni totali dello stesso file, e la fusione viene rifiutata
+    dichiarando il motivo.

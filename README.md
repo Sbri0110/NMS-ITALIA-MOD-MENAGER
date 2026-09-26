@@ -62,6 +62,15 @@ Guida completa, disinstallazione e problemi comuni:
   meccanismi nativi del gioco: non sposta e non rinomina nulla.
 - **Trova i conflitti reali.** Due mod che toccano lo stesso file ma proprieta'
   diverse **non** vengono segnalate come in conflitto.
+- **Unisce due mod in conflitto.** Quando due mod scrivono valori diversi sulla
+  stessa proprieta', costruisce una terza mod che contiene il contributo di
+  entrambe, con una scelta esplicita sui punti in contrasto. Non serve
+  MBINCompiler: si uniscono le proprieta' dichiarate. Se un file non si puo'
+  unire, la fusione viene rifiutata con il motivo invece di produrre una mod
+  incompleta.
+- **Legge i file `.MXML`.** Da Worlds Part II MBINCompiler produce `.MXML`, ma il
+  gioco applica solo `.EXML`: il programma legge questi file, ne dichiara il
+  contenuto e avvisa quando vanno rinominati.
 - **Diagnostica completa** in sola lettura: ogni controllo con la spiegazione di
   cosa significa e cosa fare.
 - **Trova la mod problematica** per bisezione: con cinquanta mod servono sei

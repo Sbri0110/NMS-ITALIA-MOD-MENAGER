@@ -60,6 +60,8 @@
     <div class="funzione"><b>Analizza i file <code>.MBIN</code>.</b> <span>Per vedere cosa una mod cambia davvero, non solo che ha sostituito un file. Richiede MBINCompiler della versione giusta: una versione diversa non fallisce, produce un risultato sbagliato senza segnalarlo, e il programma preferisce non usarla.</span></div>
     <div class="funzione"><b>Attiva e disattiva una singola mod.</b> <span>Usa i meccanismi nativi del gioco: non sposta e non rinomina nulla. Così funziona anche la Safe Mode.</span></div>
     <div class="funzione"><b>Trova i conflitti reali.</b> <span>Due mod che toccano lo stesso file ma proprietà diverse <em>non</em> vengono segnalate come in conflitto. I falsi positivi rendono inutili gli avvisi.</span></div>
+    <div class="funzione"><b>Unisce due mod in conflitto.</b> <span>Quando due mod scrivono valori diversi sulla stessa proprietà, il programma costruisce una terza mod che contiene il contributo di entrambe. Non serve MBINCompiler: si uniscono le proprietà dichiarate, e dove sono in contrasto decidi tu quale tenere. Se un file non si può unire, la fusione viene rifiutata con il motivo invece di produrre una mod incompleta.</span></div>
+    <div class="funzione"><b>Legge i file <code>.MXML</code>.</b> <span>Da Worlds Part II MBINCompiler produce <code>.MXML</code>, ma il gioco applica solo <code>.EXML</code>: una mod consegnata così non fa nulla e non lo segnala. Il programma legge questi file, dice cosa contengono e avvisa quando vanno rinominati.</span></div>
     <div class="funzione"><b>Diagnostica completa.</b> <span>Controlli in sola lettura, ognuno con la spiegazione di cosa significa e cosa fare. Un controllo che non si può eseguire viene dichiarato, non omesso.</span></div>
     <div class="funzione"><b>Trova la mod problematica.</b> <span>Per bisezione: con cinquanta mod servono sei avvii del gioco, non cinquanta. Lo stato di partenza viene sempre ripristinato.</span></div>
     <div class="funzione"><b>Profili, backup e ripristino.</b> <span>Insiemi di mod attive applicabili e confrontabili senza toccare i file.</span></div>
@@ -78,9 +80,11 @@
       <li>Non è firmato digitalmente.</li>
     </ul>
     <p style="color:var(--testo-tenue)">
-      Restano due funzioni non ancora realizzate — la fusione assistita dei
-      conflitti e l'analisi dei file <code>.MBXML</code> — e sono dichiarate
-      dentro il programma. Nessun pulsante che finge di funzionare.
+      Non unisce due mod che sostituiscono lo stesso file con due <code>.MBIN</code>:
+      sono sostituzioni totali e non si possono combinare. In quel caso la fusione
+      viene rifiutata con il motivo, invece di produrre una mod incompleta.
+      E non mostra il valore originale del gioco: i file di base stanno dentro gli
+      archivi <code>.pak</code>, e leggerli richiederebbe di scompattarli.
     </p>
   </div>
 </section>
@@ -151,7 +155,7 @@
     <ul>
       <li>una mod in <code>PCBANKS\MODS</code> <strong>non verrà caricata</strong>;</li>
       <li>una mod <code>.pak</code> <strong>probabilmente non funziona</strong>;</li>
-      <li>un file <code>.MXML</code> <strong>non funziona</strong> (unica eccezione <code>LocTable.MXML</code>);</li>
+      <li>un file <code>.MXML</code> <strong>non funziona</strong> (unica eccezione <code>LocTable.MXML</code>): è la forma leggibile che MBINCompiler produce da Worlds Part II, e va <strong>rinominata in <code>.EXML</code></strong> per essere applicata;</li>
       <li>le mod non aggiornate <strong>prima del 29 gennaio 2025</strong> non funzionano con 5.50+.</li>
     </ul>
   </div>
