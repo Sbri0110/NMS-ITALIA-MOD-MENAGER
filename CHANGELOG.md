@@ -5,6 +5,93 @@ Le versioni seguono [Versionamento Semantico](https://semver.org/lang/it/).
 
 ---
 
+## 1.2.1 — 27 settembre 2026
+
+Corregge tre difetti segnalati da un utente, in tre giri di prove.
+
+### La barra di stato
+
+Una barra sotto la barra superiore che **compare solo quando serve**: a riposo
+non esiste, in nessuna schermata — Impostazioni comprese. Si accende quando
+un'operazione comincia e si ritira qualche secondo dopo averne detto l'esito.
+
+| | |
+|---|---|
+| **In corso** | la barra scorre, accanto c'e' cosa sta facendo — *"Analisi dei conflitti fra le mod..."* |
+| **Completato** | la barra si riempie di verde — *"Elenco delle mod aggiornato."* |
+| **Non riuscito** | la barra si riempie di rosso; il dettaglio e' nella schermata |
+
+**Perche' non basta "sto lavorando".** Le operazioni veloci — "rileggi dal
+disco", "cerca i conflitti" — durano un decimo di secondo: un segnale che si
+accende e si spegne in quel tempo non viene visto, per quanto sia grande. Serve
+anche dire **quando si e' finito**, e l'esito deve restare visibile qualche
+secondo.
+
+**Nessuna percentuale, di proposito.** Non esiste: le operazioni sono chiamate a
+un servizio, e nessuno riporta a che punto e'. La barra e' indeterminata mentre
+si lavora e piena quando ha finito — due valori, entrambi veri. Un numero che
+sale sarebbe inventato.
+
+### Il programma non lavora piu' da solo
+
+- **All'apertura non succede nulla.** Prima la dashboard analizzava
+  l'installazione appena avviata, senza che nessuno l'avesse chiesto. Ora ogni
+  schermata resta in attesa e **lo dichiara**: *"Nessuna analisi ancora
+  eseguita — premi «Analizza l'installazione» per ..."*.
+- Ogni schermata si legge quando l'utente lo chiede. Le etichette dei pulsanti
+  non dicono piu' "ripeti" quando non e' ancora stato fatto niente: *Analizza
+  l'installazione*, *Cerca i conflitti*, *Verifica lo stato*.
+- **Profili e Backup non avevano un pulsante di lettura**: togliendo la lettura
+  automatica sarebbero rimasti vuoti per sempre. Ora ce l'hanno.
+- Le Impostazioni continuano a leggere se stesse — sono una pagina di
+  configurazione e non hanno un pulsante per farlo — ma **senza accendere la
+  barra**, perche' non e' una cosa che l'utente ha chiesto.
+- I messaggi di stato non dicono piu' "caricamento in corso" quando non sta
+  caricando niente: dicono *"non ancora letto"*.
+
+### Correzioni
+
+- **Pulsanti irraggiungibili.** "Cerca i conflitti", "Rileggi dal disco" e
+  "Crea copia" erano legati a `IsVisible="{Binding HasInstallation}"`. Sembra
+  sensato — non ha senso cercare conflitti se non c'e' un'installazione — ed e'
+  un ragionamento **circolare**: l'installazione non c'e' proprio perche' non e'
+  ancora stata cercata, e l'unico modo di cercarla erano quei pulsanti. Tre
+  schermate da cui non si poteva uscire.
+- **Quali pulsanti si nascondono, e quali no.** Un comando che **avvia il
+  lavoro** non si nasconde mai: e' l'unica via d'uscita dallo stato iniziale. Un
+  comando che **aprirebbe una cartella** invece si nasconde, perche' senza
+  analisi non si conosce alcun percorso e premendolo non succederebbe niente:
+  "Apri cartella di gioco" e "Apri cartella delle mod" compaiono dopo
+  l'analisi. Tutti gli altri restano visibili, perche' se non possono funzionare
+  lo dicono.
+- **Pulsanti grigi senza spiegazione.** "Inizia la ricerca" nella Diagnostica
+  era disattivato prima della prima lettura, senza che ci fosse modo di capire
+  perche'. L'area dei risultati ora non si mostra finche' non c'e' qualcosa da
+  mostrare.
+- **L'indicatore di attivita' non compariva mai.** Era legato a `IsBusy` della
+  shell, una proprieta' che nessuno impostava perche' la shell non esegue
+  operazioni. Un segnale che non si accende e' peggio di un segnale assente: chi
+  lo ha scritto crede che la funzione ci sia.
+- **Il segnale e' condiviso da tutta l'applicazione**, non legato alla
+  schermata: un'operazione che prosegue mentre l'utente cambia sezione resta
+  visibile.
+- **Aperto e chiuso in un unico punto**, `RunGuardedAsync`, da cui passano tutti
+  i comandi: non puo' restare acceso per una dimenticanza nel percorso di errore.
+- **Le operazioni annidate non confondono l'esito.** La ricerca della mod
+  problematica compie decine di passi: i passi interni aggiornano la descrizione,
+  ma il risultato lo dichiara solo l'operazione piu' esterna.
+
+### Test
+
+Nuovo `PrimaryActionReachabilityTests`, che legge i file dell'interfaccia e
+verifica due cose: che nessun comando di lettura sia condizionato da una
+visibilita', e che gli unici pulsanti nascosti dall'installazione siano quelli
+che aprono una cartella. Il difetto non era nella view model — i comandi
+esistevano ed erano eseguibili — quindi nessun test che costruisca view model
+poteva accorgersene.
+
+---
+
 ## 1.2.0 — 26 settembre 2026
 
 Chiude le ultime due funzioni dichiarate come mancanti. La lista "NON ANCORA
