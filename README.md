@@ -137,6 +137,19 @@ segnalazioni e aggiornamenti.
 
 ---
 
+## La traduzione italiana dei dati di gioco
+
+I nomi italiani delle cose di No Man's Sky — oggetti, risorse, tecnologie, aggiornamenti
+— **non si traducono a mano**: si prendono dalla **traduzione ufficiale del gioco**,
+estratta dai suoi file di localizzazione e tenuta in `NMS ITALIA - BOT/traduzione/`
+(84.324 voci, con italiano e inglese, più il catalogo di gioco tradotto).
+
+Serve a questo progetto quando deve dire **che cosa** tocca una mod: gli identificativi
+dentro gli archivi sono gli stessi che il gioco usa per le sue stringhe, e da lì si
+arriva al nome che il giocatore vede.
+
+---
+
 ## Licenza
 
 **Proprietaria — tutti i diritti riservati.** Vedi [`LICENSE`](LICENSE).
