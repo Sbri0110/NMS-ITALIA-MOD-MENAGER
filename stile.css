@@ -185,3 +185,9 @@ nav.sopra a:hover { text-decoration: underline; }
   .marchio { max-width: 260px; }
   section { padding: 34px 0; }
 }
+
+/* Schermate della release */
+.schermate { display: grid; grid-template-columns: 1fr; gap: 24px; }
+.schermate figure { margin: 0; }
+.schermate img { display: block; width: 100%; height: auto; border: 1px solid var(--bordo); border-radius: 14px; }
+.schermate figcaption { margin-top: 10px; color: var(--testo-tenue); }

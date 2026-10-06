@@ -27,6 +27,8 @@ una cartella: spiega lo stato del modding.
 
 ## Installazione
 
+Versione corrente: **[1.2.3](https://github.com/Sbri0110/NMS-ITALIA-MOD-MENAGER/releases/tag/v1.2.3)** — nuova interfaccia blu notte e champagne, logo originale e icone uniformi.
+
 Il programma **non richiede l'installazione di .NET** e **funziona offline**.
 
 1. scarica `NMSItalia.ModMenager.zip` dalla pagina delle **release**;
@@ -43,6 +45,18 @@ Guida completa, disinstallazione e problemi comuni:
 ---
 
 ## Cosa fa
+
+### Schermate della versione 1.2.3
+
+Home, gestione delle mod e backup prima della lettura dell'installazione. Immagini generate dall'interfaccia reale, con dati isolati.
+
+![Home: logo originale e nuova dashboard](docs/immagini/schermate/home.png)
+
+![Le mie mod: collezione e pannello Nexus richiudibile](docs/immagini/schermate/mods.png)
+
+![Backup: creazione e gestione delle copie di sicurezza](docs/immagini/schermate/backup.png)
+
+### Funzioni
 
 - **Rileva il gioco da solo** su Steam, Xbox PC / Game Pass e GOG, oppure dalla
   cartella che indichi tu — rivalidata a ogni avvio.

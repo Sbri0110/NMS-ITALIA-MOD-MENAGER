@@ -5,6 +5,19 @@ Le versioni seguono [Versionamento Semantico](https://semver.org/lang/it/).
 
 ---
 
+## 1.2.3 — 6 ottobre 2026
+
+- Nuovo stile blu notte e champagne in tutte le schermate.
+- Dashboard con composizione illustrata, nuova navigazione e intestazioni specifiche per ciascuna pagina.
+- Logo originale NMS Italia nella barra laterale.
+- Icone condivise tra navigazione, intestazioni e stati iniziali delle pagine.
+- Pannello Nexus Mods richiudibile per lasciare spazio alla collezione.
+- Campi, pulsanti, badge e selezioni coordinati con il nuovo tema.
+- Schermate della nuova interfaccia nel README e sul sito.
+
+Verifiche: build Release e 738 test superati. Rendering delle sette schermate
+iniziali con dati isolati; nessun collaudo completo nel gioco reale.
+
 ## 1.2.2 — 6 ottobre 2026
 
 - Rollback completo anche per cartelle vuote, file aggiunti e cartelle create implicitamente.
