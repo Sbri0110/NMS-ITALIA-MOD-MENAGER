@@ -5,7 +5,7 @@ Le versioni seguono [Versionamento Semantico](https://semver.org/lang/it/).
 
 ---
 
-## 1.2.2 — in preparazione, 6 ottobre 2026
+## 1.2.2 — 6 ottobre 2026
 
 - Rollback completo anche per cartelle vuote, file aggiunti e cartelle create implicitamente.
 - Un rollback incompleto rimane recuperabile e non viene dichiarato riuscito.
@@ -19,7 +19,8 @@ Le versioni seguono [Versionamento Semantico](https://semver.org/lang/it/).
 - Operazioni e backup bloccati se attraversano junction o link simbolici, anche dentro le sottocartelle.
 - Test di pulizia dello staging isolato dalle altre prove eseguite in parallelo.
 
-Questa versione e' in preparazione e non e' ancora disponibile come release pubblica.
+Verifiche: 738 test superati e build Release riuscita. Non e' stato eseguito un
+collaudo manuale completo dell'interfaccia o nel gioco reale.
 
 ## 1.2.1 — 27 settembre 2026
 
