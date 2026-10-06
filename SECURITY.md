@@ -250,7 +250,7 @@ Il software **non**:
 Per segnalare un problema di sicurezza, **non aprire una segnalazione
 pubblica**. Contatta privatamente la community sul Discord di NMS Italia:
 
-<https://discord.gg/KB2NbjCW6h>
+<https://discord.gg/YNDmEMMRrT>
 
 Descrivi il problema in privato e attendi che sia stato valutato prima di
 renderlo pubblico. Un problema di sicurezza pubblicato prima che esista una

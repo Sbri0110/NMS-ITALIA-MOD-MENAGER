@@ -5,6 +5,22 @@ Le versioni seguono [Versionamento Semantico](https://semver.org/lang/it/).
 
 ---
 
+## 1.2.2 — in preparazione, 6 ottobre 2026
+
+- Rollback completo anche per cartelle vuote, file aggiunti e cartelle create implicitamente.
+- Un rollback incompleto rimane recuperabile e non viene dichiarato riuscito.
+- Backup con stato di attivazione e Safe Mode; compatibilita' con i backup precedenti.
+- Elenchi di mod, profili e backup aggiornati dopo le operazioni, anche mentre la schermata lavora.
+- Barra di stato coerente con gli errori gestiti dai servizi.
+- Aggiornamenti automatici bloccati se l'impronta non e' stata verificata; validazione dei percorsi ZIP e limite di estrazione.
+- Aggiornamento interrotto se il programma resta aperto; percorsi con percentuali gestiti e tentativi di copia limitati.
+- Pulizia dei download falliti e terminazione di MBINCompiler quando l'operazione viene annullata.
+- Identificativi di backup e transazioni confinati alle proprie cartelle; nomi di dispositivo Windows con piu' estensioni rifiutati.
+- Operazioni e backup bloccati se attraversano junction o link simbolici, anche dentro le sottocartelle.
+- Test di pulizia dello staging isolato dalle altre prove eseguite in parallelo.
+
+Questa versione e' in preparazione e non e' ancora disponibile come release pubblica.
+
 ## 1.2.1 — 27 settembre 2026
 
 Corregge tre difetti segnalati da un utente, in tre giri di prove.
@@ -536,4 +552,4 @@ documentazione.
 
 Dubbi, problemi, segnalazioni e aggiornamenti: **Discord di NMS Italia**.
 
-<https://discord.gg/KB2NbjCW6h>
+<https://discord.gg/YNDmEMMRrT>

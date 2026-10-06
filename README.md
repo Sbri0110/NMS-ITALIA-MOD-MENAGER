@@ -118,7 +118,7 @@ La documentazione completa, con le fonti verificate:
 Il progetto nasce e vive nel server **NMS Italia** su Discord: supporto,
 segnalazioni e aggiornamenti.
 
-### <https://discord.gg/KB2NbjCW6h>
+### <https://discord.gg/YNDmEMMRrT>
 
 **Sito del progetto:** <https://sbri0110.github.io/NMS-ITALIA-MOD-MENAGER/>
 

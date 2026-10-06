@@ -68,7 +68,7 @@ continua a funzionare con la scheda di rete disattivata.
 ### Cosa contiene l'header `User-Agent`
 
 ```
-NMSItalia.ModMenager/1.1.0 (Windows; +https://discord.gg/KB2NbjCW6h)
+NMSItalia.ModMenager/1.1.0 (Windows; +https://discord.gg/YNDmEMMRrT)
 ```
 
 Sono tre informazioni: il nome del programma, la sua versione e un indirizzo
@@ -215,7 +215,7 @@ corretta.
 Per domande su questa informativa, segnalazioni o chiarimenti, entra nel
 **Discord di NMS Italia**:
 
-<https://discord.gg/KB2NbjCW6h>
+<https://discord.gg/YNDmEMMRrT>
 
 ---
 

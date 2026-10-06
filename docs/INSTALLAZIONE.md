@@ -218,7 +218,7 @@ l'archivio per intero in una cartella vuota. L'eseguibile ha bisogno delle
 Entra nel **Discord di NMS Italia**: è il posto dove si trovano supporto,
 segnalazioni e aggiornamenti.
 
-<https://discord.gg/KB2NbjCW6h>
+<https://discord.gg/YNDmEMMRrT>
 
 Quando chiedi aiuto per un problema, allega il **report diagnostico** che
 il programma esporta dalla sezione Diagnostica: contiene cosa ha verificato
