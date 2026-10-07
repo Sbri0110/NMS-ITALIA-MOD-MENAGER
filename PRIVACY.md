@@ -1,24 +1,24 @@
 # Informativa sulla privacy — NMS ITALIA MOD MENAGER
 
-**Ultimo aggiornamento:** 25 settembre 2026
-**Versione del programma:** 1.1.0
+**Ultimo aggiornamento:** 7 ottobre 2026
+**Versione del programma:** 1.3.0
 
 ---
 
 ## In una riga
 
-Il programma **non raccoglie nulla e non invia nulla che ti riguardi**. Non
-esiste un server nostro, non esiste un account, non esiste telemetria. I tuoi
-dati restano sul tuo computer.
+Il programma non invia telemetria e non dispone di un server nostro. Conserva
+localmente impostazioni, catalogo, registri e copie di sicurezza. Le funzioni
+Nexus contattano i servizi indicati sotto; il report diagnostico viene salvato
+solo dove scegli tu e non viene inviato automaticamente.
 
 ---
 
 ## 1. Dati raccolti
 
-**Nessuno.**
-
-Il programma non raccoglie, non trasmette e non conserva informazioni
-personali. In particolare non raccoglie:
+Non vengono raccolte centralmente statistiche o informazioni personali.
+I registri locali possono contenere percorsi personali; il catalogo contiene
+l'elenco delle mod. In particolare non vengono inviati ai nostri servizi:
 
 - statistiche d'uso o di avvio;
 - segnalazioni automatiche di errore;
@@ -39,8 +39,8 @@ in queste circostanze:
 
 | Destinazione | Quando | Cosa viene inviato |
 |---|---|---|
-| `api.nexusmods.com` | Solo se premi un pulsante nella schermata Impostazioni, e solo se hai inserito una chiave API | La tua chiave API (header `apikey`) e l'intestazione `User-Agent` |
-| il servizio di distribuzione degli archivi di Nexus | Solo dopo che hai premuto "Scarica e installa" | Nessun dato: è una richiesta di scaricamento |
+| `api.nexusmods.com` | Quando usi esplicitamente le funzioni Nexus nelle Impostazioni o nella schermata Mod | La chiave API (header `apikey`), `User-Agent`, gli identificativi delle mod/file richiesti e, se necessari, i parametri del collegamento `nxm` |
+| il servizio di distribuzione degli archivi di Nexus | Dopo una richiesta esplicita di installazione o aggiornamento | La richiesta di scaricamento e gli eventuali parametri di autorizzazione del collegamento ricevuto da Nexus |
 | `api.github.com` e il servizio di distribuzione degli archivi di GitHub | Solo se premi "Controlla" nelle Impostazioni, **oppure** all'avvio se hai attivato il controllo | Solo l'intestazione `User-Agent` |
 
 **Nessuna connessione avviene senza il tuo consenso.** Non in background, non su
@@ -68,7 +68,7 @@ continua a funzionare con la scheda di rete disattivata.
 ### Cosa contiene l'header `User-Agent`
 
 ```
-NMSItalia.ModMenager/1.1.0 (Windows; +https://discord.gg/YNDmEMMRrT)
+NMSItalia.ModMenager/1.3.0 (Windows; +https://discord.gg/YNDmEMMRrT)
 ```
 
 Sono tre informazioni: il nome del programma, la sua versione e un indirizzo
@@ -141,6 +141,17 @@ Cosa contengono, in sintesi:
 Se usi la funzione "esporta report diagnostico", il programma **mostra
 prima esattamente cosa verrà incluso** e il file resta locale. Sta a te
 decidere se condividerlo.
+
+Il report comprende versione del programma, sistema operativo, controlli,
+mod e conflitti; puoi escludere i registri recenti. Il filtro oscura credenziali
+riconoscibili, percorsi personali, indirizzi email e parametri dei collegamenti.
+Controlla l'anteprima prima di condividerla: un filtro non può riconoscere ogni
+informazione privata inserita in testo libero. Database, archivi delle mod,
+salvataggi e copie di sicurezza non vengono allegati.
+
+Per gli aggiornamenti vengono conservati localmente identificativi Nexus,
+versione, impronte SHA-256 e riferimenti alla copia precedente. La cronologia
+non conserva credenziali o collegamenti di download autorizzati.
 
 ---
 

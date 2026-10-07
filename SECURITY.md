@@ -255,3 +255,21 @@ pubblica**. Contatta privatamente la community sul Discord di NMS Italia:
 Descrivi il problema in privato e attendi che sia stato valutato prima di
 renderlo pubblico. Un problema di sicurezza pubblicato prima che esista una
 correzione mette a rischio tutti quelli che usano il programma.
+
+## Funzioni 1.3.0 — verifica del 7 ottobre 2026
+
+L'aggiornamento Nexus verifica l'identita' del file selezionato, la provenienza
+registrata e l'impronta dei contenuti installati. Richiede il gioco chiuso,
+crea una copia completa prima della sostituzione e usa una transazione per
+rimuovere i file obsoleti e installare quelli nuovi nella stessa cartella.
+Il ripristino riguarda una sola versione precedente della mod. File modificati
+esternamente, archivi pericolosi e copie di ripristino mancanti vengono rifiutati.
+
+Il report diagnostico usa campi selezionati, registri limitati e facoltativi,
+un filtro per dati sensibili riconoscibili e un'anteprima prima del salvataggio.
+Non allega database, archivi o salvataggi e non invia il report automaticamente.
+Il testo libero va comunque controllato dall'utente prima della condivisione.
+
+Le nuove funzioni sono coperte da test automatici anche per errori di copia,
+annullamento e recupero dei metadati. La verifica non costituisce una nuova
+certificazione dell'intero programma e non include un account Nexus reale.

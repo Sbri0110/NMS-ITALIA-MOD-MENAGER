@@ -27,7 +27,7 @@ una cartella: spiega lo stato del modding.
 
 ## Installazione
 
-Versione corrente: **[1.2.3](https://github.com/Sbri0110/NMS-ITALIA-MOD-MENAGER/releases/tag/v1.2.3)** — nuova interfaccia blu notte e champagne, logo originale e icone uniformi.
+Versione corrente: **[1.3.0](https://github.com/Sbri0110/NMS-ITALIA-MOD-MENAGER/releases/tag/v1.3.0)** — aggiornamenti delle mod Nexus con backup e ripristino, report di assistenza esportabile.
 
 Il programma **non richiede l'installazione di .NET** e **funziona offline**.
 
@@ -57,6 +57,12 @@ Home, gestione delle mod e backup prima della lettura dell'installazione. Immagi
 ![Backup: creazione e gestione delle copie di sicurezza](docs/immagini/schermate/backup.png)
 
 ### Funzioni
+
+La versione **1.3.0** aggiunge gli aggiornamenti delle mod Nexus con backup e ripristino della singola mod, e il report diagnostico esportabile con anteprima e dati sensibili riconoscibili oscurati. [Guida alle nuove funzioni](docs/AGGIORNAMENTI-E-REPORT.md) · [Verifiche e limiti della release](docs/VERIFICHE-1.3.0.md).
+
+![Aggiornamenti delle mod: esempio con dati dimostrativi](docs/immagini/schermate/aggiornamenti-1.3.0.png)
+
+![Report di assistenza: esempio con dati dimostrativi](docs/immagini/schermate/report-1.3.0.png)
 
 - **Rileva il gioco da solo** su Steam, Xbox PC / Game Pass e GOG, oppure dalla
   cartella che indichi tu — rivalidata a ogni avvio.

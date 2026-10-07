@@ -5,6 +5,21 @@ Le versioni seguono [Versionamento Semantico](https://semver.org/lang/it/).
 
 ---
 
+## 1.3.0 — 7 ottobre 2026
+
+- Controllo esplicito dei file Nexus per le mod installate, con versione installata e disponibile, varianti e catene di aggiornamento dichiarate dall'autore.
+- Provenienza persistente per le nuove installazioni Nexus; associazione esplicita delle mod preesistenti senza inventarne la versione.
+- Aggiornamento con download, backup completo obbligatorio e sostituzione transazionale nella stessa cartella. File obsoleti rimossi; stato di attivazione e Safe Mode conservati.
+- Ripristino della sola mod alla versione precedente, disponibile anche dopo il riavvio e senza rete. Copie complete consultabili nella schermata Backup.
+- Rifiuto di aggiornamenti con percorsi non sicuri, eseguibili anche rinominati, contenuti non applicabili, file ritirati, collegamenti nxm di un altro file, gioco aperto o modifiche esterne.
+- Blocco delle operazioni contemporanee da schermate diverse durante un'operazione attiva.
+- Report di assistenza locale con anteprima, diagnostica, mod, versioni, conflitti e log recenti facoltativi e limitati. Percorsi personali, email, utente corrente e credenziali riconoscibili oscurati; salvataggio atomico.
+- Lettura Nexus v1 corretta per elenchi semplici e raggruppati; risposte malformate dichiarate come errori. ID v1 usati per download e nxm, separati dagli ID v3.
+- Conservazione dei metadati anche nell'elenco restituito dalla sincronizzazione del catalogo.
+- Scorrimento delle pagine Mod e Diagnostica per mantenere accessibili le nuove azioni nelle finestre piccole.
+
+Guida: [aggiornamenti e report](docs/AGGIORNAMENTI-E-REPORT.md). Verifiche e limiti: [collaudo 1.3.0](docs/VERIFICHE-1.3.0.md).
+
 ## 1.2.3 — 6 ottobre 2026
 
 - Nuovo stile blu notte e champagne in tutte le schermate.
