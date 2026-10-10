@@ -5,6 +5,25 @@ Le versioni seguono [Versionamento Semantico](https://semver.org/lang/it/).
 
 ---
 
+## Compatibilita' dichiarata — 10 ottobre 2026
+
+Non e' una nuova versione del programma: il pacchetto resta la **1.3.0**. Sono
+aggiornati i documenti per dichiarare la compatibilita' con la versione corrente
+del gioco.
+
+- **Compatibilita' dichiarata con No Man's Sky 7.06 (7.6.0.0)** e con tutte le
+  versioni dalla 5.50 in poi. Verificata il 10 ottobre 2026.
+- **La 7.06 e' una patch di sole correzioni di gioco** (camera in space walk,
+  targeting del Gravitino Coil, difetto dei Radiant Pillar duplicati, crash su
+  GPU Nvidia, crash su PS5 al caricamento): nessuna voce riguarda il modding.
+- **Nessuna modifica al programma era necessaria.** Il percorso `GAMEDATA\MODS`,
+  i formati `.MBIN` ed `.EXML` e il file di stato `GCMODSETTINGS.MXML` non sono
+  cambiati da Worlds Part II (5.50). Nel codice non esiste alcuna soglia, elenco
+  o confronto legato alla singola patch di gioco.
+- Aggiornata la verifica diretta sulla macchina di sviluppo in
+  `docs/FORMATO-MOD-NMS.md`: la versione installata e' passata da 7.3.0.0
+  (25 settembre 2026) a **7.6.0.0**.
+
 ## 1.3.0 — 7 ottobre 2026
 
 - Controllo esplicito dei file Nexus per le mod installate, con versione installata e disponibile, varianti e catene di aggiornamento dichiarate dall'autore.

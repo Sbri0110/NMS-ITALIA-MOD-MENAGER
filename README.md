@@ -115,6 +115,21 @@ La versione **1.3.0** aggiunge gli aggiornamenti delle mod Nexus con backup e ri
 - **Windows 10** o successivo, 64 bit
 - **No Man's Sky** su Steam, Xbox PC / Game Pass o GOG
 
+### Compatibilita' con la versione del gioco
+
+**Supportato: No Man's Sky 7.06 (7.6.0.0) e tutte le versioni dalla 5.50 in poi.**
+
+Verificato il **10 ottobre 2026**. Il sistema di modding e' stato riscritto da
+**Worlds Part II (5.50)** e da allora non e' piu' cambiato: le patch di
+correzione uscite dopo — **7.06 compresa** (5 ottobre 2026) — non toccano il
+percorso `GAMEDATA\MODS`, i formati `.MBIN` ed `.EXML`, ne' il file di stato
+`GCMODSETTINGS.MXML`. La 7.06 e' una patch di sole correzioni di gioco.
+
+Un aggiornamento che riscriva di nuovo il sistema di modding richiederebbe una
+nuova verifica: il programma non dichiara compatibilita' che non ha potuto
+verificare. Dettagli e fonti in
+[`docs/FORMATO-MOD-NMS.md`](docs/FORMATO-MOD-NMS.md) (§4).
+
 Il pacchetto e' **autosufficiente**: non serve installare .NET.
 
 ---

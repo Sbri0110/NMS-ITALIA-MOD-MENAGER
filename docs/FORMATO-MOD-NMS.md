@@ -4,6 +4,8 @@
 > Ogni affermazione qui riportata e' stata verificata su fonti ufficiali/primarie
 > oppure direttamente sull'installazione presente sulla macchina di sviluppo.
 > Data della verifica: **25 settembre 2026**.
+> Compatibilita' con la versione di gioco **7.06** verificata il **10 ottobre
+> 2026** (§4, "Compatibilita' dichiarata").
 > Quando una voce non e' verificabile, e' marcata esplicitamente come **NON VERIFICATO**.
 
 Questo documento esiste per una ragione precisa: **il 90% delle guide in
@@ -268,6 +270,36 @@ Questa e' la base dell'**Obsolete Mod Detector** (punto 16) e del **Game Update
 Guard** (punto 15): non si guarda la data in modo ingenuo, si guarda se le
 strutture toccate dalla mod esistono ancora.
 
+### Compatibilita' dichiarata
+
+| | |
+|---|---|
+| **Versione del gioco supportata** | **7.06 (7.6.0.0)** e tutte le versioni dalla 5.50 in poi |
+| **Verificata il** | 10 ottobre 2026, su Xbox PC / Game Pass |
+| **Ultima versione di gioco verificata** | 7.6.0.0 |
+
+Il sistema di modding e' stato riscritto da **Worlds Part II (5.50)** e da allora
+non e' piu' cambiato. Le patch di correzione uscite dopo — fino alla **7.06** del
+5 ottobre 2026 compresa — non modificano il percorso `GAMEDATA\MODS`, i formati
+`.MBIN` ed `.EXML`, ne' il file di stato `GCMODSETTINGS.MXML`.
+
+**La 7.06 e' una patch di sole correzioni di gioco.** Le note ufficiali elencano
+cinque interventi (camera in space walk, targeting del Gravitino Coil, un difetto
+dei Radiant Pillar duplicati, un crash su alcune GPU Nvidia, un crash su PS5 al
+caricamento) e **nessuna voce che riguardi il modding**.
+
+Per questo il programma **non richiede alcun adattamento** per la 7.06: non
+esiste nel codice alcuna soglia, alcun elenco di versioni, alcun confronto che
+debba essere aggiornato quando il gioco passa a una nuova patch della stessa
+generazione. Il programma legge la versione installata e la usa per due sole
+cose: la soglia 5.50 (compatibilita' della struttura delle mod) e il confronto
+con MBINCompiler (analisi dei file `.MBIN`).
+
+**Limite dichiarato.** Tutto questo vale per versioni **della stessa generazione
+(5.50+)**. Un aggiornamento che riscriva di nuovo il sistema di modding — come ha
+fatto Worlds Part II — richiederebbe una nuova verifica. Non e' prevedibile in
+anticipo, e non viene dichiarato come supportato.
+
 ---
 
 ## 5. Piattaforme
@@ -281,12 +313,19 @@ strutture toccate dalla mod esistono ancora.
 
 ### Verifica diretta sulla macchina di sviluppo
 
+Verifica ripetuta il **10 ottobre 2026**, dopo la patch di gioco **7.06**:
+
 ```text
 Piattaforma : Xbox PC (Game Pass)
 Percorso    : C:\XboxGames\No Man's Sky\Content
-Versione    : 7.3.0.0  (da appxmanifest.xml, Identity Name="HelloGames.NoMansSky")
+Versione    : 7.6.0.0  (da appxmanifest.xml e MicrosoftGame.Config,
+                         Identity Name="HelloGames.NoMansSky")
 Eseguibile  : Binaries\NMS.exe
 ```
+
+La versione precedente, al momento della prima stesura di questo documento
+(25 settembre 2026), era **7.3.0.0**. Fra le due non e' cambiato nulla che
+riguardi il modding.
 
 Esiti dei test di accessibilita':
 
